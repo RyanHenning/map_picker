@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Laclede's LAN" />
+        <meta http-equiv="Content-Language" content="en">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>CSGO Map Picker</title>
+
+        <link rel="shortcut icon" href="./assets/images/favicon.ico">
+
+        <script src="./assets/js/jquery-2.min.js"></script>
+
+    </head>
+    
+    <script>
+        var removedCount = 0;
+        
+        $( document ).ready(function() {
+            console.clear();
+            console.log("Page has been reset.");
+        });
+    
+        function disableCell(mapName) {
+            
+            mapName = mapName.toString().trim().toLowerCase();
+            
+            if (removedCount < 6 && $('#' + mapName).text().length > 0) {
+                removedCount++;
+                $('#' + mapName).empty();
+                $('#' + mapName).css('background-image', 'none');            
+            }
+            
+            console.log(mapName + ' has been eliminated.');
+        }
+        
+        function resetPage() {
+            if (removedCount >= 6 ) {
+                window.location.reload();
+            }
+        }
+    </script>
+    
+    <style>
+        html, body {
+            background: url(./assets/images/map_picker/background.jpg) no-repeat center;
+            height: 100%;
+            margin: 0;
+            padding: 0; 
+        }
+
+        table {
+            height: 100%;
+            font-size: 250%;
+            text-align: center;
+            text-transform: lowercase;
+            min-height: 100%;
+            width: 100%; 
+            
+            color: gold;
+            font-weight: bold;
+            text-decoration: none;
+            text-shadow:
+                -2px -2px 0 #000,
+                2px -2px 0 #000,
+                -2px 2px 0 #000,
+                2px 2px 0 #000; 
+        }
+        
+        table tr td {
+            background-position:left center;
+            background-size: cover;
+            height: 50%;
+            width: 25%
+        }
+    </style>
+  
+    <body>
+        <table>
+            <tr>
+                <td onclick="disableCell('de_cache')" id="de_cache" style="background: url(./assets/images/map_picker/de_cache.jpg) no-repeat center;">
+                    de_cache
+                </td>
+                <td onclick="disableCell('de_cobblestone')" id="de_cobblestone" style="background: url(./assets/images/map_picker/de_cobblestone.jpg) no-repeat center;">
+                    de_cobblestone
+                </td>
+                <td onclick="disableCell('de_dust2')" id="de_dust2" style="background: url(./assets/images/map_picker/de_dust2.jpg) no-repeat center;">
+                    de_dust2
+                </td>
+                <td onclick="disableCell('de_inferno')" id="de_inferno" style="background: url(./assets/images/map_picker/de_inferno.jpg) no-repeat center;">
+                    de_inferno
+                </td>
+            </tr>
+            <tr>
+                <td  onclick="disableCell('de_mirage')" id="de_mirage" style="background: url(./assets/images/map_picker/de_mirage.jpg) no-repeat center;">
+                    de_mirage
+                </td>
+                <td onclick="disableCell('de_overpass')" id="de_overpass" style="background: url(./assets/images/map_picker/de_overpass.jpg) no-repeat center;">
+                    de_overpass
+                </td>
+                <td onclick="disableCell('de_train')" id="de_train" style="background: url(./assets/images/map_picker/de_train.jpg) no-repeat center;">
+                    de_train
+                </td>
+                <td><a onClick="resetPage();"><img src="./assets/images/map_picker/reset.png"></a></td>
+            </tr>
+        </table>
+    </body>
+</html>
