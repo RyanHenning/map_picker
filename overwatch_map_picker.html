@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="author" content="Laclede's LAN" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+        <title>Overwatch Map Picker</title>
+
+        //<link rel="shortcut icon" href="./assets/images/favicon.ico">
+
+        <script src="./assets/js/jquery-2.min.js"></script>
+
+        <link rel="stylesheet" href="./assets/stylesheets/font-awesome4.5.min.css">
+
+        <style>
+            html, body {
+                background: url(./assets/images/map_picker/background.jpg) no-repeat center;
+                height: 100%;
+                margin: 0;
+                padding: 0; 
+            }
+
+            table {
+                height: 100%;
+                font-size: 250%;
+                text-align: center;
+                text-transform: lowercase;
+                min-height: 100%;
+                width: 100%; 
+                
+                color: gold;
+                font-weight: bold;
+                text-decoration: none;
+                text-shadow:
+                    -2px -2px 0 #000,
+                    2px -2px 0 #000,
+                    -2px 2px 0 #000,
+                    2px 2px 0 #000; 
+            }
+
+            table tr td {
+                background-position:left center;
+                background-size: cover;
+                height: 50%;
+                width: 25%;
+            }
+            
+            table tr #backAction {
+                background-color: #43bcdc;
+                color: #eeeeee;
+                cursor: pointer;
+                font-size: 22px;
+                margin-left: 190px;
+                padding: 18px 10px 10px 10px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: none;
+                width: 200px;
+                visibility:hidden;
+                
+                /* Disable text selection */
+                -webkit-touch-callout: none; /* iOS Safari */
+                -webkit-user-select: none;   /* Chrome/Safari/Opera */
+                -khtml-user-select: none;    /* Konqueror */
+                -moz-user-select: none;      /* Firefox */
+                -ms-user-select: none;       /* IE/Edge */
+                user-select: none;           /* non-prefixed version, currently not supported by any browser */
+            }
+        </style>
+    </head>
+
+    <body>
+        <table>
+            <tr>
+                <td onclick="disableCell('anubis')" id="anubis" style="background: url(./assets/images/map_picker/overwatch/anubis.jpg) no-repeat center;">
+                    Anubis
+                </td>
+                <td onclick="disableCell('ddorado')" id="dorado" style="background: url(./assets/images/map_picker/overwatch/dorado.jpg) no-repeat center;">
+                    Dorado
+                </td>
+                <td onclick="disableCell('gibraltar')" id="gibraltar" style="background: url(./assets/images/map_picker/overwatch/gibraltar.jpg) no-repeat center;">
+                    Gibraltar
+                </td>
+                <td onclick="disableCell('hanamura')" id="hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura.jpg) no-repeat center;">
+                    Hanamura
+                </td>
+                <td onclick="disableCell('hollywood')" id="hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood.jpg) no-repeat center;">
+                    Hollywood
+                </td>
+                <td onclick="disableCell('ilios')" id="ilios" style="background: url(./assets/images/map_picker/overwatch/ilios.jpg) no-repeat center;">
+                    Ilios
+                </td>
+            </tr>
+            <tr>
+                <td  onclick="disableCell('de_mirage')" id="de_mirage" style="background: url(./assets/images/map_picker/csgo/de_mirage.jpg) no-repeat center;">
+                    de_mirage
+                </td>
+                <td onclick="disableCell('de_overpass')" id="de_overpass" style="background: url(./assets/images/map_picker/csgo/de_overpass.jpg) no-repeat center;">
+                    de_overpass
+                </td>
+                <td onclick="disableCell('de_train')" id="de_train" style="background: url(./assets/images/map_picker/csgo/de_train.jpg) no-repeat center;">
+                    de_train
+                </td>
+                <td onclick="disableCell('hanamura')" id="hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura.jpg) no-repeat center;">
+                    Hanamura
+                </td>
+                <td onclick="disableCell('hollywood')" id="hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood.jpg) no-repeat center;">
+                    Hollywood
+                </td>
+                <td onclick="disableCell('ilios')" id="ilios" style="background: url(./assets/images/map_picker/overwatch/ilios.jpg) no-repeat center;">
+                    Ilios
+                </td>
+                <td>
+                    <div id="backAction" onClick="resetPage();">&nbsp;UNDO</div>
+                </td>
+            </tr>
+        </table>
+
+        <script>
+            // Add function that entry from array by value
+            Array.prototype.remove = function() {
+                var what, a = arguments, L = a.length, ax;
+                    while (L && this.length) {
+                    what = a[--L];
+                    while ((ax = this.indexOf(what)) !== -1) {
+                        this.splice(ax, 1);
+                    }
+                }
+                return this;
+            };
+
+            var eliminatedMaps = new Array();
+            var mapPool = ['de_cache', 'de_cobblestone', 'de_dust2', 'de_inferno', 'de_mirage', 'de_overpass', 'de_train'];
+
+            $( document ).ready(function() {
+                window.console.clear();
+            });
+
+            function disableCell(mapName) {
+                mapName = mapName.toString().trim().toLowerCase();
+
+                if (mapPool.indexOf(mapName) > -1) {
+                    if (eliminatedMaps.length < mapPool.length - 1 && eliminatedMaps.indexOf(mapName) < 0) {
+                        eliminatedMaps.push(mapName);
+                        $('#' + mapName).empty();
+                        $('#' + mapName).css('background-image', 'none');
+                        
+                        window.console.log(mapName + ' cell removed.');
+                    }
+                }
+                
+                if (eliminatedMaps.length == mapPool.length - 1) {
+                    $('#backAction').html('<i class="fa fa-undo"></i>&nbsp;RESET');
+                } else if (eliminatedMaps.length > 0) {
+                    $('#backAction').css('visibility', 'visible');
+                    $('#backAction').html('<i class="fa fa-step-backward"></i>&nbsp;UNDO');
+                }
+            };
+
+            function enableCell(mapName) {
+                if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
+                    $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/csgo/' + mapName + '.jpg")');
+                    $('#' + mapName).text(mapName);
+                    eliminatedMaps.remove(mapName);
+                    
+                    window.console.log(mapName + ' cell enabled.');
+                }
+                
+                if (eliminatedMaps.length < 1) {
+                    $('#backAction').css('visibility', 'hidden');
+                }
+            };
+
+            function resetPage() {
+                if (eliminatedMaps.length + 1 >= mapPool.length ) {
+                    while (eliminatedMaps.length > 0) {
+                        enableCell(eliminatedMaps[eliminatedMaps.length - 1]);
+                    }
+                } else if (eliminatedMaps.length > 0) {
+                    enableCell(eliminatedMaps[eliminatedMaps.length - 1]);
+                }
+            };
+        </script>
+    </body>
+</html>
