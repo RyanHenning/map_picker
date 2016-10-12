@@ -23,7 +23,7 @@
             }
 
             table {
-                height: 100%;
+                height: auto;
                 font-size: 250%;
                 text-align: center;
                 text-transform: lowercase;
@@ -68,6 +68,15 @@
                 -ms-user-select: none;       /* IE/Edge */
                 user-select: none;           /* non-prefixed version, currently not supported by any browser */
             }
+			
+			::-webkit-scrollbar
+			{
+				width:0px;
+			}
+			::-webkit-scrollbar-track-piece
+			{
+				background-color:transparent;
+			}
         </style>
     </head>
 
@@ -83,17 +92,19 @@
                 <td onclick="disableCell('de_dust2')" id="de_dust2" style="background: url(./assets/images/map_picker/csgo/de_dust2.jpg) no-repeat center;">
                     de_dust2
                 </td>
+            </tr>
+            <tr>
                 <td onclick="disableCell('de_inferno')" id="de_inferno" style="background: url(./assets/images/map_picker/csgo/de_inferno.jpg) no-repeat center;">
                     de_inferno
                 </td>
-            </tr>
-            <tr>
                 <td  onclick="disableCell('de_mirage')" id="de_mirage" style="background: url(./assets/images/map_picker/csgo/de_mirage.jpg) no-repeat center;">
                     de_mirage
                 </td>
                 <td onclick="disableCell('de_overpass')" id="de_overpass" style="background: url(./assets/images/map_picker/csgo/de_overpass.jpg) no-repeat center;">
                     de_overpass
                 </td>
+             </tr>
+             <tr>
                 <td onclick="disableCell('de_train')" id="de_train" style="background: url(./assets/images/map_picker/csgo/de_train.jpg) no-repeat center;">
                     de_train
                 </td>

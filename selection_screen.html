@@ -21,6 +21,38 @@
                 margin: 0;
                 padding: 0; 
             }
+			
+			.bg {
+				width: auto;
+				height : auto;
+				max-height: 100%;
+				max-width: 100%;
+			}
+							
+			table {
+                height: 100%;
+                font-size: 250%;
+                text-align: center;
+                text-transform: lowercase;
+                min-height: 100%;
+                width: 100%; 
+                
+                color: gold;
+                font-weight: bold;
+                text-decoration: none;
+                text-shadow:
+                    -2px -2px 0 #000,
+                    2px -2px 0 #000,
+                    -2px 2px 0 #000,
+                    2px 2px 0 #000; 
+            }
+			
+			table tr td {
+                background-position:left center;
+                background-size: cover;
+                height: 50%;
+                width: 25%;
+			}
     	</style>
 	
 	
@@ -28,20 +60,25 @@
 	</head>
     
     <body>
-    <table>
-    	<tr>
-        	<td>
-    </table>
-    <table width="200" border="3" cellspacing="8">
-      <tbody>
-        <tr>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-        </tr>
-      </tbody>
-	</table>
+        <table> 
+            <tr> 
+            	<th>Laclede's Lan</th> 
+            	<th>2016</th> 
+            </tr> 
+            <tr> 
+            	<td><img width="250px" height="200px" onclick="location.href='https://www.facebook.com/lacledeslan/'" src="assets/images/LL.png" alt=""/>
+                </td>
+                
+            </tr>
+            <tr>
+            	<td id="csgo">
+           	    	<img class="bg" onclick="location.href='map_picker.html'" src="assets/images/map_picker/csgo/csgo_logo.jpg" alt=""/>
+                </td>
+           	  	<td id="overwatch"> 
+               	  <img class="bg" onclick="location.href='overwatch_map_picker.html'" src="assets/images/map_picker/overwatch/overwatch_logo.jpg" alt=""/>
+             	</td>
+            </tr> 
+        </table>
 
     </body>
 </html>
