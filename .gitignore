@@ -1,0 +1,29 @@
+### Windows Junk ###
+# Windows image file caches
+*.lnk
+$RECYCLE.BIN/
+Desktop.ini
+Thumbs.db
+ehthumbs.db
+
+
+### Linux Junk ###
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+
+### macOS Junk ###
+._*
+*.DS_Store
+.AppleDouble
+.LSOverride
+
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
