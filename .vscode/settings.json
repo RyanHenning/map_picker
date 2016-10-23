@@ -1,0 +1,38 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+    "editor.detectIndentation": true,
+
+    // Controls if the editor should automatically format the line after typing
+    "editor.formatOnType": true,
+
+    // Insert spaces when pressing Tab. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
+    "editor.insertSpaces": true,
+
+    // Zoom the font of the editor when using mouse wheel and holding Ctrl
+    "editor.mouseWheelZoom": true,
+
+    // Columns at which to show vertical rulers
+    "editor.rulers": [160],
+
+    // The number of spaces a tab is equal to. This setting is overriden based on the file contents when `editor.detectIndentation` is on.
+    "editor.tabSize": 4,
+
+    // Controls if lines should wrap. The lines will wrap at min(editor.wrappingColumn, viewportWidthInColumns).
+    "editor.wordWrap": false,
+
+    // The default character set encoding to use when reading and writing files.
+    "files.encoding": "utf8",
+
+    // When enabled, will trim trailing whitespace when you save a file.
+    "files.trimTrailingWhitespace": true,
+
+    // Confirm before synchronizing git repositories.
+    "git.confirmSync": true,
+
+    // Indent <head> and <body> sections.
+    "html.format.indentInnerHtml": true,
+
+    // Maximum amount of characters per line (0 = disable).
+    "html.format.wrapLineLength": 0
+}

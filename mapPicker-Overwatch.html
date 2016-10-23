@@ -1,166 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="author" content="Laclede's LAN" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <title>Overwatch Map Picker</title>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="author" content="Laclede's LAN" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        //<link rel="shortcut icon" href="./assets/images/favicon.ico">
+        <title>Overwatch Picker | Laclede's LAN</title>
 
-        <script src="./assets/js/jquery-3.min.js"></script>
+		<link rel="shortcut icon" href="./assets/images/favicon.ico">
 
-        <link rel="stylesheet" href="./assets/stylesheets/font-awesome4.5.min.css">
+		<script src="./assets/js/jquery-3.min.js"></script>
 
-        <style>
-            html, body {
-                background: url(./assets/images/map_picker/background.jpg) center;
-                height: 100%;
-                margin: 0;
-                padding: 0; 
-            }
-			
-			.element {
-			    position: fixed;
-			    bottom: 0;
-			    right: 0;
-			}
-			
-			.element2 {
-				position: fixed;
-				top: 0;
-				right: 0;
-			}
+		<link rel="stylesheet" href="./assets/stylesheets/font-awesome.min.css">
+		<link rel="stylesheet" href="./assets/stylesheets/mapPicker.css">
 
-            table {
-                height: 100%;
-                font-size: 250%;
-                text-align: center;
-                min-height: 100%;
-                width: 100%; 
-                
-                color: gold;
-                font-weight: bold;
-                text-decoration: none;
-                text-shadow:
-                    -2px -2px 0 #000,
-                    2px -2px 0 #000,
-                    -2px 2px 0 #000,
-                    2px 2px 0 #000; 
-            }
-
+		<style>
             table tr {
-                background-position:left center;
+                background-position: left center;
                 background-size: cover;
-                height: 50%;
-                width: 25%;
+                height: 33%;
+                width: 20%;
             }
-			
-			table td {
-				height:200px;
-				width:25%;
-			}
-            
-            table tr #backAction {
-                background-color: #43bcdc;
-                color: #eeeeee;
-                cursor: pointer;
-                font-size: 22px;
-                margin-left: 190px;
-                padding: 18px 10px 10px 10px;
-                text-align: center;
-                text-decoration: none;
-                text-transform: none;
-                width: 200px;
-                visibility:hidden;
-                
-                /* Disable text selection */
-                -webkit-touch-callout: none; /* iOS Safari */
-                -webkit-user-select: none;   /* Chrome/Safari/Opera */
-                -khtml-user-select: none;    /* Konqueror */
-                -moz-user-select: none;      /* Firefox */
-                -ms-user-select: none;       /* IE/Edge */
-                user-select: none;           /* non-prefixed version, currently not supported by any browser */
+
+            table td {
+                width: 20%;
             }
-			
-			table tr #homeAction {
-                background-color: #43bcdc;
-                color: #eeeeee;
-                cursor: pointer;
-                font-size: 22px;
-                margin-left: 190px;
-                padding: 18px 10px 10px 10px;
-                text-align: center;
-                text-decoration: none;
-                text-transform: none;
-                width: 200px;
-			}
-        </style>
-    </head>
+		</style>
+	</head>
 
-    <body>
-        <table>
-            <tr>
-                <td onclick="disableCell('Anubis')" id="Anubis" style="background: url(./assets/images/map_picker/overwatch/Anubis_map.jpg) no-repeat center;">
-                    Anubis
-                </td>
-                <td onclick="disableCell('Dorado')" id="Dorado" style="background: url(./assets/images/map_picker/overwatch/Dorado_map.jpg) no-repeat center;">
-                    Dorado
-                </td>
-                <td onclick="disableCell('Eichenwalde')" id="Eichenwalde" style="background: url(./assets/images/map_picker/overwatch/Eichenwalde_map.jpg) no-repeat center;">
-                    Eichenwalde
-                </td>
-            </tr>
-            <tr>
-
-                <td onclick="disableCell('Gibraltar')" id="Gibraltar" style="background: url(./assets/images/map_picker/overwatch/Gibraltar_map.jpg) no-repeat center;">
-                    Gibraltar
-                </td>
-                <td onclick="disableCell('Hanamura')" id="Hanamura" style="background: url(./assets/images/map_picker/overwatch/Hanamura_map.jpg) no-repeat center;">
-                    Hanamura
-                </td>
-                <td onclick="disableCell('Hollywood')" id="Hollywood" style="background: url(./assets/images/map_picker/overwatch/Hollywood_map.jpg) no-repeat center;">
-                    Hollywood
-                </td>
-            </tr>
-            <tr>
-                <td onclick="disableCell('Ilios')" id="Ilios" style="background: url(./assets/images/map_picker/overwatch/Ilios_map.jpg) no-repeat center;">
-                    Ilios
-                </td>
-                <td  onclick="disableCell('Kings_Row')" id="Kings_Row" style="background: url(./assets/images/map_picker/overwatch/Kings_Row_map.jpg) no-repeat center;">
-                    Kings_row
-                </td>
-                <td onclick="disableCell('Lijiang')" id="Lijiang" style="background: url(./assets/images/map_picker/overwatch/Lijiang_map.jpg) no-repeat center;">
-                    Lijiang
-                </td>
-            </tr>
-            <tr>
-                <td onclick="disableCell('Nepal')" id="Nepal" style="background: url(./assets/images/map_picker/overwatch/Nepal_map.jpg) no-repeat center;">
-                    Nepal
-                </td>
-                <td onclick="disableCell('Numbani')" id="Numbani" style="background: url(./assets/images/map_picker/overwatch/Numbani_map.jpg) no-repeat center;">
-                    Numbani
-                </td>
-                <td onclick="disableCell('Route_66')" id="Route_66" style="background: url(./assets/images/map_picker/overwatch/Route_66_map.jpg) no-repeat center;">
-                    Route_66
-                </td>
-            </tr>
-            <tr>
-                <td onclick="disableCell('Volskaya')" id="Volskaya" style="background: url(./assets/images/map_picker/overwatch/Volskaya_map.jpg) no-repeat center;">
-                    Volskaya
-                </td>
+	<body>
+		<table>
+			<tr>
+				<td onclick="disableCell('anubis')" id="anubis" style="background: url(./assets/images/map_picker/overwatch/anubis.jpg) no-repeat center;">
+					Anubis
+				</td>
+				<td onclick="disableCell('dorado')" id="dorado" style="background: url(./assets/images/map_picker/overwatch/dorado.jpg) no-repeat center;">
+					Dorado
+				</td>
+				<td onclick="disableCell('eichenwalde')" id="eichenwalde" style="background: url(./assets/images/map_picker/overwatch/eichenwalde.jpg) no-repeat center;">
+					Eichenwalde
+				</td>
+				<td onclick="disableCell('gibraltar')" id="gibraltar" style="background: url(./assets/images/map_picker/overwatch/gibraltar.jpg) no-repeat center;">
+					Gibraltar
+				</td>
+				<td onclick="disableCell('hanamura')" id="hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura.jpg) no-repeat center;">
+					Hanamura
+				</td>
+			</tr>
+			<tr>
+				<td onclick="disableCell('hollywood')" id="hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood.jpg) no-repeat center;">
+					Hollywood
+				</td>
+				<td onclick="disableCell('ilios')" id="ilios" style="background: url(./assets/images/map_picker/overwatch/ilios.jpg) no-repeat center;">
+					Ilios
+				</td>
+				<td onclick="disableCell('kingsRow')" id="kingsRow" style="background: url(./assets/images/map_picker/overwatch/kingsRow.jpg) no-repeat center;">
+					King's Row
+				</td>
+				<td onclick="disableCell('lijiang')" id="lijiang" style="background: url(./assets/images/map_picker/overwatch/lijiang.jpg) no-repeat center;">
+					Lijiang
+				</td>
+				<td onclick="disableCell('nepal')" id="nepal" style="background: url(./assets/images/map_picker/overwatch/nepal.jpg) no-repeat center;">
+					Nepal
+				</td>
+			</tr>
+			<tr>
                 <td>
-                    <div class="element" id="backAction" onClick="resetPage();">&nbsp;UNDO</div>
+                    &nbsp;
                 </td>
-                <td>
-                    <div class="element2" id="homeAction" onclick="location.href='selection_screen.html'">&nbsp;HOME</div>
-                </td>
-            </tr>
-        </table>
+				<td onclick="disableCell('numbani')" id="numbani" style="background: url(./assets/images/map_picker/overwatch/numbani.jpg) no-repeat center;">
+					Numbani
+				</td>
+				<td onclick="disableCell('route66')" id="route66" style="background: url(./assets/images/map_picker/overwatch/route66.jpg) no-repeat center;">
+					Route 66
+				</td>
+				<td onclick="disableCell('volskaya')" id="volskaya" style="background: url(./assets/images/map_picker/overwatch/volskaya.jpg) no-repeat center;">
+					Volskaya
+				</td>
+				<td align="right">
+                    <div id="homeAction">
+                        <a href="./mapPicker.html">
+                            <i class="fa fa-home fa-2x"></i>
+                        </a>
+                    </div>
 
-        <script>
+                    <div id="backAction" onClick="resetPage();">
+                        &nbsp;
+                    </div>
+				</td>
+			</tr>
+		</table>
+
+		<script>
             // Add function that entry from array by value
             Array.prototype.remove = function() {
                 var what, a = arguments, L = a.length, ax;
@@ -174,7 +107,7 @@
             };
 
             var eliminatedMaps = new Array();
-            var mapPool = ['Anubis', 'Dorado', 'Eichenwalde', 'Gibraltar', 'Hanamura', 'Hollywood', 'Ilios', 'Kings_Row', 'Lijiang', 'Nepal', 'Numbani', 'Route_66', 'Volskaya'];
+            var mapPool = ['anubis', 'dorado', 'eichenwalde', 'gibraltar', 'hanamura', 'hollywood', 'ilios', 'kingsRow', 'lijiang', 'nepal', 'numbani', 'route66', 'volskaya'];
 
             $( document ).ready(function() {
                 window.console.clear();
@@ -188,28 +121,28 @@
                         eliminatedMaps.push(mapName);
                         $('#' + mapName).empty();
                         $('#' + mapName).css('background-image', 'none');
-                        
+
                         window.console.log(mapName + ' cell removed.');
                     }
                 }
-                
+
                 if (eliminatedMaps.length == mapPool.length - 1) {
-                    $('#backAction').html('<i class="fa fa-undo"></i>&nbsp;RESET');
+                    $('#backAction').html('&nbsp;<i class="fa fa-undo fa-2x"></i>&nbsp;'); /* REST */
                 } else if (eliminatedMaps.length > 0) {
                     $('#backAction').css('visibility', 'visible');
-                    $('#backAction').html('<i class="fa fa-step-backward"></i>&nbsp;UNDO');
+                    $('#backAction').html('&nbsp;<i class="fa fa-step-backward fa-2x"></i>&nbsp;');  /* STEP BACKWARDS */
                 }
             };
 
             function enableCell(mapName) {
                 if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
-                    $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/overwatch/' + mapName + '_map.jpg")');
+                    $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/overwatch/' + mapName + '.jpg")');
                     $('#' + mapName).text(mapName);
                     eliminatedMaps.remove(mapName);
-                    
+
                     window.console.log(mapName + ' cell enabled.');
                 }
-                
+
                 if (eliminatedMaps.length < 1) {
                     $('#backAction').css('visibility', 'hidden');
                 }
@@ -225,5 +158,5 @@
                 }
             };
         </script>
-    </body>
+	</body>
 </html>

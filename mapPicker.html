@@ -1,76 +1,46 @@
 <!doctype html>
 <html lang="en">
-	<head>
-    	<meta charset="utf-8">
+    <head>
+        <meta charset="utf-8">
         <meta name="author" content="Laclede's LAN" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-    	<title>Laclede's LAN Selection Screen</title>
-    
-    	<link rel="shortcut icon" href="./assets/images/favicon.ico">
+
+        <title>Map Picker | Laclede's LAN</title>
+
+        <link rel="shortcut icon" href="./assets/images/favicon.ico">
 
         <script src="./assets/js/jquery-3.min.js"></script>
 
-    	<link rel="stylesheet" href="./assets/stylesheets/font-awesome4.5.min.css">
-        
-        <style>
-            html, body {
-                background: url(./assets/images/map_picker/background.jpg) no-repeat center;
-                height: 100%;
-                margin: 0;
-                padding: 0; 
-            }
-			
-			.bg {
-                width: 100%;
-                height : auto;
-            }
+        <link rel="stylesheet" href="./assets/stylesheets/font-awesome.min.css">
+        <link rel="stylesheet" href="./assets/stylesheets/mapPicker.css">
 
-            table {
-                height: 100%;
-                font-size: 250%;
-                text-align: center;
-                text-transform: lowercase;
-                min-height: 100%;
-                width: 100%; 
-                
-                color: gold;
-                font-weight: bold;
-                text-decoration: none;
-                text-shadow:
-                    -2px -2px 0 #000,
-                    2px -2px 0 #000,
-                    -2px 2px 0 #000,
-                    2px 2px 0 #000; 
-            }
-            
-            table tr td {
-                background-position:left center;
-                background-size: cover;
-                height: 50%;
-                width: 25%;
+        <style>
+            table td {
+                margin: 0;
+                padding: 0;
+                width: 50%;
             }
         </style>
-    
-    
-    
     </head>
-    
+
     <body>
-        <table> 
+        <table>
             <tr>
-                <td id="csgo">
+                <!-- Counter-Strike: GO -->
+                <td style="background: url(./assets/images/map_picker/csgo/logo_background.jpg) no-repeat center;">
                     <a href="./mapPicker-CSGO.html">
-                        <img class="bg" src="assets/images/map_picker/csgo/csgo_logo.jpg" alt=""/>
+                        <img src="./assets/images/map_picker/csgo/logo_white.png" style="width: 100%;">
                     </a>
                 </td>
-                <td id="overwatch"> 
+
+                <!-- Overwatch -->
+                <td style="background: url(./assets/images/map_picker/overwatch/logo_background.jpg) no-repeat center;">
                     <a href="./mapPicker-Overwatch.html">
-                        <img class="bg" src="assets/images/map_picker/overwatch/overwatch_logo.jpg" alt=""/>
+                        <img src="./assets/images/map_picker/overwatch/logo_white.png" style="width: 100%;">
                     </a>
                 </td>
-            </tr> 
+            </tr>
         </table>
     </body>
 </html>
