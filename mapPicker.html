@@ -23,11 +23,11 @@
             }
 			
 			.bg {
-				width: 100%;
-				height : auto;
-			}
-							
-			table {
+                width: 100%;
+                height : auto;
+            }
+
+            table {
                 height: 100%;
                 font-size: 250%;
                 text-align: center;
@@ -44,30 +44,33 @@
                     -2px 2px 0 #000,
                     2px 2px 0 #000; 
             }
-			
-			table tr td {
+            
+            table tr td {
                 background-position:left center;
                 background-size: cover;
                 height: 50%;
                 width: 25%;
-			}
-    	</style>
-	
-	
-	
-	</head>
+            }
+        </style>
+    
+    
+    
+    </head>
     
     <body>
         <table> 
             <tr>
-            	<td id="csgo">
-           	    	<img class="bg" onclick="location.href='mapPicker-CSGO.html'" src="assets/images/map_picker/csgo/csgo_logo.jpg" alt=""/>
+                <td id="csgo">
+                    <a href="./mapPicker-CSGO.html">
+                        <img class="bg" src="assets/images/map_picker/csgo/csgo_logo.jpg" alt=""/>
+                    </a>
                 </td>
-           	  	<td id="overwatch"> 
-               	  <img class="bg" onclick="location.href='mapPicker-Overwatch.html'" src="assets/images/map_picker/overwatch/overwatch_logo.jpg" alt=""/>
-             	</td>
+                <td id="overwatch"> 
+                    <a href="./mapPicker-Overwatch.html">
+                        <img class="bg" src="assets/images/map_picker/overwatch/overwatch_logo.jpg" alt=""/>
+                    </a>
+                </td>
             </tr> 
         </table>
-
     </body>
 </html>
