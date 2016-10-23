@@ -38,7 +38,6 @@
                 height: auto;
                 font-size: 250%;
                 text-align: center;
-                text-transform: lowercase;
                 min-height: 100%;
                 width: 100%; 
                 
@@ -55,12 +54,12 @@
             table tr {
                 background-position:left center;
                 background-size: cover;
-                height: 50%;
-                width: 25%;
+                height: 33%;
+                width: 33%;
             }
 			
 			table td {
-				height:200px;
+				height:33%;
 				width:33%;
 			}
             
@@ -107,144 +106,172 @@
     <body>
         <table>
             <tr>
+            	<td onclick="disableCell('Cache')" id="Cache" style="background: url(./assets/images/map_picker/csgo/Cache.jpg) no-repeat center;">
+                    Cache  
+                </td>
+            	<td onclick="disableCell('Cobblestone')" id="Cobblestone" style="background: url(./assets/images/map_picker/csgo/Cobblestone.jpg) no-repeat center;">
+                    Cobblestone  
+            	</td>
+                <td  onclick="disableCell('Dust_II')" id="Dust_II" style="background: url(./assets/images/map_picker/csgo/Dust_II.jpg) no-repeat center;">
+                    Dust_II  
+                </td>
+            </tr>
+            <tr>
+            	<td  onclick="disableCell('Mirage')" id="Mirage" style="background: url(./assets/images/map_picker/csgo/Mirage.jpg) no-repeat center;">
+                    Mirage  
+                </td>
+                <td onclick="disableCell('Overpass')" id="Overpass" style="background: url(./assets/images/map_picker/csgo/Overpass.jpg) no-repeat center;">
+                    Overpass  
+                </td>
+                <td onclick="disableCell('Nuke')" id="Nuke" style="background: url(./assets/images/map_picker/csgo/Nuke.jpg) no-repeat center;">
+                    Nuke  
+                </td>
+            </tr>
+            <tr>
+            	<td  onclick="disableCell('Train')" id="Train" style="background: url(./assets/images/map_picker/csgo/Train.jpg) no-repeat center;">
+                    Train  
+                </td>
+            
+            
+            <!--<tr>
                 <td onclick="disableCell('de_ali')" id="de_ali" style="background: url(./assets/images/map_picker/csgo/de_ali.jpg) no-repeat center;">
-                    Ali (de)
+                    Ali  
                 </td>
                 <td  onclick="disableCell('de_aztec')" id="de_aztec" style="background: url(./assets/images/map_picker/csgo/de_aztec.jpg) no-repeat center;">
-                    Aztec (de)
+                    Aztec  
                 </td>
                 <td onclick="disableCell('de_bank')" id="de_bank" style="background: url(./assets/images/map_picker/csgo/de_bank.jpg) no-repeat center;">
-                    Bank (de)
+                    Bank  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_bazaar')" id="de_bazaar" style="background: url(./assets/images/map_picker/csgo/de_bazaar.jpg) no-repeat center;">
-                    Bazaar (de)
+                    Bazaar  
                 </td>
                 <td  onclick="disableCell('de_blackgold')" id="de_blackgold" style="background: url(./assets/images/map_picker/csgo/de_blackgold.jpg) no-repeat center;">
-                    Black Gold (de)
+                    Black Gold  
                 </td>
                 <td onclick="disableCell('de_cache')" id="de_cache" style="background: url(./assets/images/map_picker/csgo/de_cache.jpg) no-repeat center;">
-                    Cache (de)
+                    Cache  
                 </td>
              </tr>
             <tr>
                 <td onclick="disableCell('de_castle')" id="de_castle" style="background: url(./assets/images/map_picker/csgo/de_castle.jpg) no-repeat center;">
-                    Castle (de)
+                    Castle  
                 </td>
                 <td onclick="disableCell('de_cbble')" id="de_cbble" style="background: url(./assets/images/map_picker/csgo/de_cbble.jpg) no-repeat center;">
-                    Cobblestone (de)
+                    Cobblestone  
                 </td>
                 <td onclick="disableCell('de_coast')" id="de_coast" style="background: url(./assets/images/map_picker/csgo/de_coast.jpg) no-repeat center;">
-                    Coast (de)
+                    Coast  
                 </td>
             </tr>
             <tr>
                 <td onclick="disableCell('de_dust')" id="de_dust" style="background: url(./assets/images/map_picker/csgo/de_dust.jpg) no-repeat center;">
-                    Dust (de)
+                    Dust  
                 </td>
                 <td  onclick="disableCell('de_dust2')" id="de_dust2" style="background: url(./assets/images/map_picker/csgo/de_dust2.jpg) no-repeat center;">
-                    Dust II (de)
+                    Dust II  
                 </td>
                 <td onclick="disableCell('de_empire')" id="de_empire" style="background: url(./assets/images/map_picker/csgo/de_empire.jpg) no-repeat center;">
-                    Empire (de)
+                    Empire  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_facade')" id="de_facade" style="background: url(./assets/images/map_picker/csgo/de_facade.jpg) no-repeat center;">
-                    Facade (de)
+                    Facade  
                 </td>
                 <td  onclick="disableCell('de_favela')" id="de_favela" style="background: url(./assets/images/map_picker/csgo/de_favela.jpg) no-repeat center;">
-                    Favela (de)
+                    Favela  
                 </td>
                 <td onclick="disableCell('de_inferno')" id="de_inferno" style="background: url(./assets/images/map_picker/csgo/de_inferno.jpg) no-repeat center;">
-                    Inferno (de)
+                    Inferno  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_lake')" id="de_lake" style="background: url(./assets/images/map_picker/csgo/de_lake.jpg) no-repeat center;">
-                    Lake (de)
+                    Lake  
                 </td>
                 <td  onclick="disableCell('de_log')" id="de_log" style="background: url(./assets/images/map_picker/csgo/de_log.jpg) no-repeat center;">
-                    Log (de)
+                    Log  
                 </td>
                 <td onclick="disableCell('de_marquis')" id="de_marquis" style="background: url(./assets/images/map_picker/csgo/de_marquis.jpg) no-repeat center;">
-                    Marquis (de)
+                    Marquis  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_mikla')" id="de_mikla" style="background: url(./assets/images/map_picker/csgo/de_mikla.jpg) no-repeat center;">
-                    Mikla (de)
+                    Mikla  
                 </td>
                 <td  onclick="disableCell('de_mirage')" id="de_mirage" style="background: url(./assets/images/map_picker/csgo/de_mirage.jpg) no-repeat center;">
-                    Mirage (de)
+                    Mirage  
                 </td>
                 <td onclick="disableCell('de_mist')" id="de_mist" style="background: url(./assets/images/map_picker/csgo/de_mist.jpg) no-repeat center;">
-                    Mist (de)
+                    Mist  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_nuke')" id="de_nuke" style="background: url(./assets/images/map_picker/csgo/de_nuke.jpg) no-repeat center;">
-                    Nuke (de)
+                    Nuke  
                 </td>
                 <td  onclick="disableCell('de_overgrown')" id="de_overgrown" style="background: url(./assets/images/map_picker/csgo/de_overgrown.jpg) no-repeat center;">
-                    Overgrown (de)
+                    Overgrown  
                 </td>
                 <td onclick="disableCell('de_overpass')" id="de_overpass" style="background: url(./assets/images/map_picker/csgo/de_overpass.jpg) no-repeat center;">
-                    Overpass (de)
+                    Overpass  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_rails')" id="de_rails" style="background: url(./assets/images/map_picker/csgo/de_rails.jpg) no-repeat center;">
-                    Rails (de)
+                    Rails  
                 </td>
                 <td  onclick="disableCell('de_resort')" id="de_resort" style="background: url(./assets/images/map_picker/csgo/de_resort.jpg) no-repeat center;">
-                    Resort (de)
+                    Resort  
                 </td>
                 <td onclick="disableCell('de_royal')" id="de_royal" style="background: url(./assets/images/map_picker/csgo/de_royal.jpg) no-repeat center;">
-                    Royal (de)
+                    Royal  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_safehouse')" id="de_safehouse" style="background: url(./assets/images/map_picker/csgo/de_safehouse.jpg) no-repeat center;">
-                    Safehouse (de)
+                    Safehouse  
                 </td>
                 <td  onclick="disableCell('de_santorini')" id="de_santorini" style="background: url(./assets/images/map_picker/csgo/de_santorini.jpg) no-repeat center;">
-                    Santorini (de)
+                    Santorini  
                 </td>
                 <td onclick="disableCell('de_seaside')" id="de_seaside" style="background: url(./assets/images/map_picker/csgo/de_seaside.jpg) no-repeat center;">
-                    Seaside (de)
+                    Seaside  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_season')" id="de_season" style="background: url(./assets/images/map_picker/csgo/de_season.jpg) no-repeat center;">
-                    Season (de)
+                    Season  
                 </td>
                 <td  onclick="disableCell('de_shorttrain')" id="de_shorttrain" style="background: url(./assets/images/map_picker/csgo/de_shorttrain.jpg) no-repeat center;">
-                    Short Train (de)
+                    Short Train  
                 </td>
                 <td onclick="disableCell('de_stmarc')" id="de_stmarc" style="background: url(./assets/images/map_picker/csgo/de_stmarc.jpg) no-repeat center;">
-                    St Marc (de)
+                    St Marc  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_sugarcane')" id="de_sugarcane" style="background: url(./assets/images/map_picker/csgo/de_sugarcane.jpg) no-repeat center;">
-                    Sugar Cane (de)
+                    Sugar Cane  
                 </td>
                 <td  onclick="disableCell('de_train')" id="de_train" style="background: url(./assets/images/map_picker/csgo/de_train.jpg) no-repeat center;">
-                    Train (de)
+                    Train  
                 </td>
                 <td onclick="disableCell('de_tulip')" id="de_tulip" style="background: url(./assets/images/map_picker/csgo/de_tulip.jpg) no-repeat center;">
-                    Tulip (de)
+                    Tulip  
                 </td>
              </tr>
              <tr>
                 <td onclick="disableCell('de_vertigo')" id="de_vertigo" style="background: url(./assets/images/map_picker/csgo/de_vertigo.jpg) no-repeat center;">
-                    Vertigo (de)
+                    Vertigo  
                 </td>
                 <td onclick="disableCell('de_zoo')" id="de_zoo" style="background: url(./assets/images/map_picker/csgo/de_zoo.jpg) no-repeat center;">
-                    Zoo (de)
-                </td>
+                    Zoo  
+                </td>-->
                 <td>
                     <div class="element" id="backAction" onClick="resetPage();">&nbsp;UNDO</div>
                 </td>
@@ -268,14 +295,15 @@
             };
 
             var eliminatedMaps = new Array();
-            var mapPool = ['de_ali', 'de_aztec', 'de_bank', 'de_bazaar', 'de_blackgold', 'de_cache', 'de_castle', 'de_cbble', 'de_coast', 'de_dust', 'de_dust2', 'de_empire', 'de_facade', 'de_favela', 'de_inferno', 'de_lake', 'de_log', 'de_marquis', 'de_mikla', 'de_mirage', 'de_mist', 'de_nuke', 'de_overgrown', 'de_overpass', 'de_rails', 'de_resort', 'de_royal', 'de_safehouse', 'de_santorini', 'de_seaside', 'de_season', 'de_shorttrain', 'de_stmarc', 'de_sugarcane', 'de_train', 'de_tulip', 'de_vertigo', 'de_zoo'];
+            var mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone'];
+			<!--'de_ali', 'de_aztec', 'de_bank', 'de_bazaar', 'de_blackgold', 'de_cache', 'de_castle', 'de_cbble', 'de_coast', 'de_dust', 'de_dust2', 'de_empire', 'de_facade', 'de_favela', 'de_inferno', 'de_lake', 'de_log', 'de_marquis', 'de_mikla', 'de_mirage', 'de_mist', 'de_nuke', 'de_overgrown', 'de_overpass', 'de_rails', 'de_resort', 'de_royal', 'de_safehouse', 'de_santorini', 'de_seaside', 'de_season', 'de_shorttrain', 'de_stmarc', 'de_sugarcane', 'de_train', 'de_tulip', 'de_vertigo', 'de_zoo'-->];
 
             $( document ).ready(function() {
                 window.console.clear();
             });
 
             function disableCell(mapName) {
-                mapName = mapName.toString().trim().toLowerCase();
+                mapName = mapName.toString();
 
                 if (mapPool.indexOf(mapName) > -1) {
                     if (eliminatedMaps.length < mapPool.length - 1 && eliminatedMaps.indexOf(mapName) < 0) {

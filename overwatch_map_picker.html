@@ -38,7 +38,6 @@
                 height: 100%;
                 font-size: 250%;
                 text-align: center;
-                text-transform: lowercase;
                 min-height: 100%;
                 width: 100%; 
                 
@@ -104,53 +103,53 @@
     <body>
         <table>
             <tr>
-                <td onclick="disableCell('anubis')" id="anubis" style="background: url(./assets/images/map_picker/overwatch/anubis_map.jpg) no-repeat center;">
-                    anubis
+                <td onclick="disableCell('Anubis')" id="Anubis" style="background: url(./assets/images/map_picker/overwatch/Anubis_map.jpg) no-repeat center;">
+                    Anubis
                 </td>
-                <td onclick="disableCell('dorado')" id="dorado" style="background: url(./assets/images/map_picker/overwatch/dorado_map.jpg) no-repeat center;">
-                    dorado
+                <td onclick="disableCell('Dorado')" id="Dorado" style="background: url(./assets/images/map_picker/overwatch/Dorado_map.jpg) no-repeat center;">
+                    Dorado
                 </td>
-                <td onclick="disableCell('eichenwalde')" id="eichenwalde" style="background: url(./assets/images/map_picker/overwatch/eichenwalde_map.jpg) no-repeat center;">
-                    eichenwalde
+                <td onclick="disableCell('Eichenwalde')" id="Eichenwalde" style="background: url(./assets/images/map_picker/overwatch/Eichenwalde_map.jpg) no-repeat center;">
+                    Eichenwalde
                 </td>
             </tr>
             <tr>
 
-                <td onclick="disableCell('gibraltar')" id="gibraltar" style="background: url(./assets/images/map_picker/overwatch/gibraltar_map.jpg) no-repeat center;">
-                    gibraltar
+                <td onclick="disableCell('Gibraltar')" id="Gibraltar" style="background: url(./assets/images/map_picker/overwatch/Gibraltar_map.jpg) no-repeat center;">
+                    Gibraltar
                 </td>
-                <td onclick="disableCell('hanamura')" id="hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura_map.jpg) no-repeat center;">
-                    hanamura
+                <td onclick="disableCell('Hanamura')" id="Hanamura" style="background: url(./assets/images/map_picker/overwatch/Hanamura_map.jpg) no-repeat center;">
+                    Hanamura
                 </td>
-                <td onclick="disableCell('hollywood')" id="hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood_map.jpg) no-repeat center;">
-                    hollywood
-                </td>
-            </tr>
-            <tr>
-                <td onclick="disableCell('ilios')" id="ilios" style="background: url(./assets/images/map_picker/overwatch/ilios_map.jpg) no-repeat center;">
-                    ilios
-                </td>
-                <td  onclick="disableCell('kings_row')" id="kings_row" style="background: url(./assets/images/map_picker/overwatch/kings_row_map.jpg) no-repeat center;">
-                    kings_row
-                </td>
-                <td onclick="disableCell('lijiang')" id="lijiang" style="background: url(./assets/images/map_picker/overwatch/lijiang_map.jpg) no-repeat center;">
-                    lijiang
+                <td onclick="disableCell('Hollywood')" id="Hollywood" style="background: url(./assets/images/map_picker/overwatch/Hollywood_map.jpg) no-repeat center;">
+                    Hollywood
                 </td>
             </tr>
             <tr>
-                <td onclick="disableCell('nepal')" id="nepal" style="background: url(./assets/images/map_picker/overwatch/nepal_map.jpg) no-repeat center;">
-                    nepal
+                <td onclick="disableCell('Ilios')" id="Ilios" style="background: url(./assets/images/map_picker/overwatch/Ilios_map.jpg) no-repeat center;">
+                    Ilios
                 </td>
-                <td onclick="disableCell('numbani')" id="numbani" style="background: url(./assets/images/map_picker/overwatch/numbani_map.jpg) no-repeat center;">
-                    numbani
+                <td  onclick="disableCell('Kings_Row')" id="Kings_Row" style="background: url(./assets/images/map_picker/overwatch/Kings_Row_map.jpg) no-repeat center;">
+                    Kings_row
                 </td>
-                <td onclick="disableCell('route_66')" id="route_66" style="background: url(./assets/images/map_picker/overwatch/route_66_map.jpg) no-repeat center;">
-                    route_66
+                <td onclick="disableCell('Lijiang')" id="Lijiang" style="background: url(./assets/images/map_picker/overwatch/Lijiang_map.jpg) no-repeat center;">
+                    Lijiang
                 </td>
             </tr>
             <tr>
-                <td onclick="disableCell('volskaya')" id="volskaya" style="background: url(./assets/images/map_picker/overwatch/volskaya_map.jpg) no-repeat center;">
-                    volskaya
+                <td onclick="disableCell('Nepal')" id="Nepal" style="background: url(./assets/images/map_picker/overwatch/Nepal_map.jpg) no-repeat center;">
+                    Nepal
+                </td>
+                <td onclick="disableCell('Numbani')" id="Numbani" style="background: url(./assets/images/map_picker/overwatch/Numbani_map.jpg) no-repeat center;">
+                    Numbani
+                </td>
+                <td onclick="disableCell('Route_66')" id="Route_66" style="background: url(./assets/images/map_picker/overwatch/Route_66_map.jpg) no-repeat center;">
+                    Route_66
+                </td>
+            </tr>
+            <tr>
+                <td onclick="disableCell('Volskaya')" id="Volskaya" style="background: url(./assets/images/map_picker/overwatch/Volskaya_map.jpg) no-repeat center;">
+                    Volskaya
                 </td>
                 <td>
                     <div class="element" id="backAction" onClick="resetPage();">&nbsp;UNDO</div>
@@ -175,14 +174,14 @@
             };
 
             var eliminatedMaps = new Array();
-            var mapPool = ['anubis', 'dorado', 'eichenwalde', 'gibraltar', 'hanamura', 'hollywood', 'ilios', 'kings_row', 'lijiang', 'nepal', 'numbani', 'route_66', 'volskaya'];
+            var mapPool = ['Anubis', 'Dorado', 'Eichenwalde', 'Gibraltar', 'Hanamura', 'Hollywood', 'Ilios', 'Kings_Row', 'Lijiang', 'Nepal', 'Numbani', 'Route_66', 'Volskaya'];
 
             $( document ).ready(function() {
                 window.console.clear();
             });
 
             function disableCell(mapName) {
-                mapName = mapName.toString().trim().toLowerCase();
+                mapName = mapName.toString();
 
                 if (mapPool.indexOf(mapName) > -1) {
                     if (eliminatedMaps.length < mapPool.length - 1 && eliminatedMaps.indexOf(mapName) < 0) {
