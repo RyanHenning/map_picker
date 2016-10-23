@@ -16,11 +16,23 @@
 
         <style>
             html, body {
-                background: url(./assets/images/map_picker/background.jpg) no-repeat center;
+                background: url(./assets/images/map_picker/background.jpg) center;
                 height: 100%;
                 margin: 0;
                 padding: 0; 
             }
+			
+			.element {
+			    position: fixed;
+			    bottom: 0;
+			    right: 0;
+			}
+			
+			.element2 {
+				position: fixed;
+				top: 0;
+				right: 0;
+			}
 
             table {
                 height: 100%;
@@ -40,12 +52,17 @@
                     2px 2px 0 #000; 
             }
 
-            table tr td {
+            table tr {
                 background-position:left center;
                 background-size: cover;
                 height: 50%;
                 width: 25%;
             }
+			
+			table td {
+				height:200px;
+				width:25%;
+			}
             
             table tr #backAction {
                 background-color: #43bcdc;
@@ -68,52 +85,78 @@
                 -ms-user-select: none;       /* IE/Edge */
                 user-select: none;           /* non-prefixed version, currently not supported by any browser */
             }
+			
+			table tr #homeAction {
+                background-color: #43bcdc;
+                color: #eeeeee;
+                cursor: pointer;
+                font-size: 22px;
+                margin-left: 190px;
+                padding: 18px 10px 10px 10px;
+                text-align: center;
+                text-decoration: none;
+                text-transform: none;
+                width: 200px;
+			}
         </style>
     </head>
 
     <body>
         <table>
             <tr>
-                <td onclick="disableCell('anubis')" id="anubis" style="background: url(./assets/images/map_picker/overwatch/anubis.jpg) no-repeat center;">
-                    Anubis
+                <td onclick="disableCell('anubis')" id="anubis" style="background: url(./assets/images/map_picker/overwatch/anubis_map.jpg) no-repeat center;">
+                    anubis
                 </td>
-                <td onclick="disableCell('ddorado')" id="dorado" style="background: url(./assets/images/map_picker/overwatch/dorado.jpg) no-repeat center;">
-                    Dorado
+                <td onclick="disableCell('dorado')" id="dorado" style="background: url(./assets/images/map_picker/overwatch/dorado_map.jpg) no-repeat center;">
+                    dorado
                 </td>
-                <td onclick="disableCell('gibraltar')" id="gibraltar" style="background: url(./assets/images/map_picker/overwatch/gibraltar.jpg) no-repeat center;">
-                    Gibraltar
-                </td>
-                <td onclick="disableCell('hanamura')" id="hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura.jpg) no-repeat center;">
-                    Hanamura
-                </td>
-                <td onclick="disableCell('hollywood')" id="hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood.jpg) no-repeat center;">
-                    Hollywood
-                </td>
-                <td onclick="disableCell('ilios')" id="ilios" style="background: url(./assets/images/map_picker/overwatch/ilios.jpg) no-repeat center;">
-                    Ilios
+                <td onclick="disableCell('eichenwalde')" id="eichenwalde" style="background: url(./assets/images/map_picker/overwatch/eichenwalde_map.jpg) no-repeat center;">
+                    eichenwalde
                 </td>
             </tr>
             <tr>
-                <td  onclick="disableCell('de_mirage')" id="de_mirage" style="background: url(./assets/images/map_picker/csgo/de_mirage.jpg) no-repeat center;">
-                    de_mirage
+
+                <td onclick="disableCell('gibraltar')" id="gibraltar" style="background: url(./assets/images/map_picker/overwatch/gibraltar_map.jpg) no-repeat center;">
+                    gibraltar
                 </td>
-                <td onclick="disableCell('de_overpass')" id="de_overpass" style="background: url(./assets/images/map_picker/csgo/de_overpass.jpg) no-repeat center;">
-                    de_overpass
+                <td onclick="disableCell('hanamura')" id="hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura_map.jpg) no-repeat center;">
+                    hanamura
                 </td>
-                <td onclick="disableCell('de_train')" id="de_train" style="background: url(./assets/images/map_picker/csgo/de_train.jpg) no-repeat center;">
-                    de_train
+                <td onclick="disableCell('hollywood')" id="hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood_map.jpg) no-repeat center;">
+                    hollywood
                 </td>
-                <td onclick="disableCell('hanamura')" id="hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura.jpg) no-repeat center;">
-                    Hanamura
+            </tr>
+            <tr>
+                <td onclick="disableCell('ilios')" id="ilios" style="background: url(./assets/images/map_picker/overwatch/ilios_map.jpg) no-repeat center;">
+                    ilios
                 </td>
-                <td onclick="disableCell('hollywood')" id="hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood.jpg) no-repeat center;">
-                    Hollywood
+                <td  onclick="disableCell('kings_row')" id="kings_row" style="background: url(./assets/images/map_picker/overwatch/kings_row_map.jpg) no-repeat center;">
+                    kings_row
                 </td>
-                <td onclick="disableCell('ilios')" id="ilios" style="background: url(./assets/images/map_picker/overwatch/ilios.jpg) no-repeat center;">
-                    Ilios
+                <td onclick="disableCell('lijiang')" id="lijiang" style="background: url(./assets/images/map_picker/overwatch/lijiang_map.jpg) no-repeat center;">
+                    lijiang
+                </td>
+            </tr>
+            <tr>
+                <td onclick="disableCell('nepal')" id="nepal" style="background: url(./assets/images/map_picker/overwatch/nepal_map.jpg) no-repeat center;">
+                    nepal
+                </td>
+                <td onclick="disableCell('numbani')" id="numbani" style="background: url(./assets/images/map_picker/overwatch/numbani_map.jpg) no-repeat center;">
+                    numbani
+                </td>
+                <td onclick="disableCell('route_66')" id="route_66" style="background: url(./assets/images/map_picker/overwatch/route_66_map.jpg) no-repeat center;">
+                    route_66
+                </td>
+            </tr>
+            <tr>
+                <td onclick="disableCell('volskaya')" id="volskaya" style="background: url(./assets/images/map_picker/overwatch/volskaya_map.jpg) no-repeat center;">
+                    volskaya
                 </td>
                 <td>
-                    <div id="backAction" onClick="resetPage();">&nbsp;UNDO</div>
+                    <div class="element" id="backAction" onClick="resetPage();">&nbsp;UNDO</div>
+                </td>
+                <td>
+                    <div class="element2" id="homeAction" onclick="location.href='selection_screen.html'">&nbsp;HOME</div>
                 </td>
             </tr>
         </table>
@@ -132,7 +175,7 @@
             };
 
             var eliminatedMaps = new Array();
-            var mapPool = ['de_cache', 'de_cobblestone', 'de_dust2', 'de_inferno', 'de_mirage', 'de_overpass', 'de_train'];
+            var mapPool = ['anubis', 'dorado', 'eichenwalde', 'gibraltar', 'hanamura', 'hollywood', 'ilios', 'kings_row', 'lijiang', 'nepal', 'numbani', 'route_66', 'volskaya'];
 
             $( document ).ready(function() {
                 window.console.clear();
@@ -161,7 +204,7 @@
 
             function enableCell(mapName) {
                 if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
-                    $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/csgo/' + mapName + '.jpg")');
+                    $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/overwatch/' + mapName + '_map.jpg")');
                     $('#' + mapName).text(mapName);
                     eliminatedMaps.remove(mapName);
                     
