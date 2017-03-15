@@ -33,52 +33,55 @@
 	<body>
 		<table>
 			<tr>
-				<td onclick="disableCell('anubis')" id="anubis" style="background: url(./assets/images/map_picker/overwatch/anubis.jpg) no-repeat center;">
+				<td onclick="disableCell('Anubis')" onDblClick="lock('Anubis')" id="Anubis" style="background: url(./assets/images/map_picker/overwatch/anubis.jpg) no-repeat center;">
 					Anubis
 				</td>
-				<td onclick="disableCell('dorado')" id="dorado" style="background: url(./assets/images/map_picker/overwatch/dorado.jpg) no-repeat center;">
+				<td onclick="disableCell('Dorado')" onDblClick="lock('Dorado')" id="Dorado" style="background: url(./assets/images/map_picker/overwatch/dorado.jpg) no-repeat center;">
 					Dorado
 				</td>
-				<td onclick="disableCell('eichenwalde')" id="eichenwalde" style="background: url(./assets/images/map_picker/overwatch/eichenwalde.jpg) no-repeat center;">
+				<td onclick="disableCell('Eichenwalde')" onDblClick="lock('Eichenwalde')" id="Eichenwalde" style="background: url(./assets/images/map_picker/overwatch/eichenwalde.jpg) no-repeat center;">
 					Eichenwalde
 				</td>
-				<td onclick="disableCell('gibraltar')" id="gibraltar" style="background: url(./assets/images/map_picker/overwatch/gibraltar.jpg) no-repeat center;">
+				<td onclick="disableCell('Gibraltar')" onDblClick="lock('Gibraltar')" id="Gibraltar" style="background: url(./assets/images/map_picker/overwatch/gibraltar.jpg) no-repeat center;">
 					Gibraltar
 				</td>
-				<td onclick="disableCell('hanamura')" id="hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura.jpg) no-repeat center;">
+				<td onclick="disableCell('Hanamura')" onDblClick="lock('Hanamura')" id="Hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura.jpg) no-repeat center;">
 					Hanamura
 				</td>
 			</tr>
 			<tr>
-				<td onclick="disableCell('hollywood')" id="hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood.jpg) no-repeat center;">
+				<td onclick="disableCell('Hollywood')" onDblClick="lock('Hollywood')" id="Hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood.jpg) no-repeat center;">
 					Hollywood
 				</td>
-				<td onclick="disableCell('ilios')" id="ilios" style="background: url(./assets/images/map_picker/overwatch/ilios.jpg) no-repeat center;">
+				<td onclick="disableCell('Ilios')" onDblClick="lock('Ilios')" id="Ilios" style="background: url(./assets/images/map_picker/overwatch/ilios.jpg) no-repeat center;">
 					Ilios
 				</td>
-				<td onclick="disableCell('kingsRow')" id="kingsRow" style="background: url(./assets/images/map_picker/overwatch/kingsRow.jpg) no-repeat center;">
+				<td onclick="disableCell('KingsRow')" onDblClick="lock('KingsRow')" id="KingsRow" style="background: url(./assets/images/map_picker/overwatch/kingsRow.jpg) no-repeat center;">
 					King's Row
 				</td>
-				<td onclick="disableCell('lijiang')" id="lijiang" style="background: url(./assets/images/map_picker/overwatch/lijiang.jpg) no-repeat center;">
+				<td onclick="disableCell('Lijiang')" onDblClick="lock('Lijiang')" id="Lijiang" style="background: url(./assets/images/map_picker/overwatch/lijiang.jpg) no-repeat center;">
 					Lijiang
 				</td>
-				<td onclick="disableCell('nepal')" id="nepal" style="background: url(./assets/images/map_picker/overwatch/nepal.jpg) no-repeat center;">
+				<td onclick="disableCell('Nepal')" onDblClick="lock('Nepal')" id="Nepal" style="background: url(./assets/images/map_picker/overwatch/nepal.jpg) no-repeat center;">
 					Nepal
 				</td>
 			</tr>
 			<tr>
-                <td>
-                    &nbsp;
-                </td>
-				<td onclick="disableCell('numbani')" id="numbani" style="background: url(./assets/images/map_picker/overwatch/numbani.jpg) no-repeat center;">
+               
+				<td onclick="disableCell('Oasis')" onDblClick="lock('Oasis')" id="Oasis" style="background: url(./assets/images/map_picker/overwatch/oasis.jpg) no-repeat center;">
+					Oasis
+				</td>
+                <td onclick="disableCell('Numbani')" onDblClick="lock('Numbani')" id="Numbani" style="background: url(./assets/images/map_picker/overwatch/numbani.jpg) no-repeat center;">
 					Numbani
 				</td>
-				<td onclick="disableCell('route66')" id="route66" style="background: url(./assets/images/map_picker/overwatch/route66.jpg) no-repeat center;">
+				<td onclick="disableCell('Route66')" onDblClick="lock('Route66')" id="Route66" style="background: url(./assets/images/map_picker/overwatch/route66.jpg) no-repeat center;">
 					Route 66
 				</td>
-				<td onclick="disableCell('volskaya')" id="volskaya" style="background: url(./assets/images/map_picker/overwatch/volskaya.jpg) no-repeat center;">
+				<td onclick="disableCell('Volskaya')" onDblClick="lock('Volskaya')" id="Volskaya" style="background: url(./assets/images/map_picker/overwatch/volskaya.jpg) no-repeat center;">
 					Volskaya
 				</td>
+                
+                
 				<td align="right">
                     <div id="homeAction">
                         <a href="./mapPicker.html">
@@ -107,7 +110,7 @@
             };
 
             var eliminatedMaps = new Array();
-            var mapPool = ['anubis', 'dorado', 'eichenwalde', 'gibraltar', 'hanamura', 'hollywood', 'ilios', 'kingsRow', 'lijiang', 'nepal', 'numbani', 'route66', 'volskaya'];
+            var mapPool = ['Anubis', 'Dorado', 'Eichenwalde', 'Gibraltar', 'Hanamura', 'Hollywood', 'Ilios', 'KingsRow', 'Lijiang', 'Nepal', 'Numbani', 'Route66', 'Volskaya', 'Oasis'];
 
             $( document ).ready(function() {
                 window.console.clear();
@@ -119,8 +122,11 @@
                 if (mapPool.indexOf(mapName) > -1) {
                     if (eliminatedMaps.length < mapPool.length - 1 && eliminatedMaps.indexOf(mapName) < 0) {
                         eliminatedMaps.push(mapName);
-                        $('#' + mapName).empty();
+                        /*$('#' + mapName).empty();*/
                         $('#' + mapName).css('background-image', 'none');
+						$('#' + mapName).css('border-style', 'outset');
+						$('#' + mapName).css('border-color', 'red');
+						$('#' + mapName).css('border-width', '10px');
 
                         window.console.log(mapName + ' cell removed.');
                     }
@@ -138,6 +144,9 @@
                 if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
                     $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/overwatch/' + mapName + '.jpg")');
                     $('#' + mapName).text(mapName);
+					$('#' + mapName).css('border-style', 'outset');
+					$('#' + mapName).css('border-color', 'transparent');
+					$('#' + mapName).css('border-width', '10px');
                     eliminatedMaps.remove(mapName);
 
                     window.console.log(mapName + ' cell enabled.');
@@ -147,6 +156,27 @@
                     $('#backAction').css('visibility', 'hidden');
                 }
             };
+			
+			function lock(mapName) {
+				mapName = mapName.toString();
+
+				$('#' + mapName).css('border-style', 'outset');
+				$('#' + mapName).css('border-color', 'green');
+				$('#' + mapName).css('border-width', '10px');
+				
+				if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
+                    $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/overwatch/' + mapName + '.jpg")');
+                    $('#' + mapName).text(mapName);
+                    /*eliminatedMaps.remove(mapName);*/
+
+                    window.console.log(mapName + ' cell locked.');
+                }
+
+                if (eliminatedMaps.length < 1) {
+                    $('#backAction').css('visibility', 'hidden');
+                }
+			
+			};
 
             function resetPage() {
                 if (eliminatedMaps.length + 1 >= mapPool.length ) {

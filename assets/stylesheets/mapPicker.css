@@ -37,3 +37,15 @@ img {
   -moz-user-drag: none;
   -o-user-drag: none;
 }
+
+.select {
+	border-style: outset;
+	border-color: #60FA2A;
+	border-width: 10px;
+}
+
+.ban {
+	border-style: inset;
+	border-color: #FF1001;
+	border-width: 10px;
+}

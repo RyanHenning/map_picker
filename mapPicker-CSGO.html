@@ -32,27 +32,27 @@
 	<body>
 		<table>
 			<tr>
-				<td onclick="disableCell('Cache')" id="Cache" style="background: url(./assets/images/map_picker/csgo/Cache.jpg) no-repeat center;">
+				<td  onclick="disableCell('Cache')" onDblClick="lock('Cache')"  id="Cache" style="background: url(./assets/images/map_picker/csgo/Cache.jpg) no-repeat center;"> 
 					Cache
 				</td>
-				<td onclick="disableCell('Cobblestone')" id="Cobblestone" style="background: url(./assets/images/map_picker/csgo/Cobblestone.jpg) no-repeat center;">
+				<td onclick="disableCell('Cobblestone')" onDblClick="lock('Cobblestone')" id="Cobblestone" style="background: url(./assets/images/map_picker/csgo/Cobblestone.jpg) no-repeat center;">
 					Cobblestone
 				</td>
-				<td onclick="disableCell('Dust_II')" id="Dust_II" style="background: url(./assets/images/map_picker/csgo/Dust_II.jpg) no-repeat center;">
-					Dust_II
+				<td onclick="disableCell('Inferno')" onDblClick="lock('Inferno')" id="Inferno" style="background: url(./assets/images/map_picker/csgo/Inferno.jpg) no-repeat center;">
+					Inferno
 				</td>
-				<td onclick="disableCell('Mirage')" id="Mirage" style="background: url(./assets/images/map_picker/csgo/Mirage.jpg) no-repeat center;">
+				<td onclick="disableCell('Mirage')" onDblClick="lock('Mirage')" id="Mirage" style="background: url(./assets/images/map_picker/csgo/Mirage.jpg) no-repeat center;">
 					Mirage
 				</td>
 			</tr>
 			<tr>
-				<td onclick="disableCell('Overpass')" id="Overpass" style="background: url(./assets/images/map_picker/csgo/Overpass.jpg) no-repeat center;">
+				<td onclick="disableCell('Overpass')" onDblClick="lock('Overpass')" id="Overpass" style="background: url(./assets/images/map_picker/csgo/Overpass.jpg) no-repeat center;">
 					Overpass
 				</td>
-				<td onclick="disableCell('Nuke')" id="Nuke" style="background: url(./assets/images/map_picker/csgo/Nuke.jpg) no-repeat center;">
+				<td onclick="disableCell('Nuke')" onDblClick="lock('Nuke')" id="Nuke" style="background: url(./assets/images/map_picker/csgo/Nuke.jpg) no-repeat center;">
 					Nuke
 				</td>
-				<td onclick="disableCell('Train')" id="Train" style="background: url(./assets/images/map_picker/csgo/Train.jpg) no-repeat center;">
+				<td onclick="disableCell('Train')" onDblClick="lock('Train')" id="Train" style="background: url(./assets/images/map_picker/csgo/Train.jpg) no-repeat center;">
 					Train
 				</td>
 				<td align="right">
@@ -71,6 +71,8 @@
 		</table>
 
 		<script>
+		
+		
             // Add function that entry from array by value
             Array.prototype.remove = function() {
                 var what, a = arguments, L = a.length, ax;
@@ -83,22 +85,47 @@
                 return this;
             };
 
-            var eliminatedMaps = new Array();
-            var mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone'];
-			<!--'de_ali', 'de_aztec', 'de_bank', 'de_bazaar', 'de_blackgold', 'de_cache', 'de_castle', 'de_cbble', 'de_coast', 'de_dust', 'de_dust2', 'de_empire', 'de_facade', 'de_favela', 'de_inferno', 'de_lake', 'de_log', 'de_marquis', 'de_mikla', 'de_mirage', 'de_mist', 'de_nuke', 'de_overgrown', 'de_overpass', 'de_rails', 'de_resort', 'de_royal', 'de_safehouse', 'de_santorini', 'de_seaside', 'de_season', 'de_shorttrain', 'de_stmarc', 'de_sugarcane', 'de_train', 'de_tulip', 'de_vertigo', 'de_zoo'-->];
+            
+			var eliminatedMaps = new Array();
+            var mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone', 'Inferno'];
+			<!--'de_ali', 'de_aztec', 'de_bank', 'de_bazaar', 'de_blackgold', 'de_cache', 'de_castle', 'de_cbble', 'de_coast', 'de_dust', 'de_dust2', 'de_empire', 'de_facade', 'de_favela', 'de_lake', 'de_log', 'de_marquis', 'de_mikla', 'de_mirage', 'de_mist', 'de_nuke', 'de_overgrown', 'de_overpass', 'de_rails', 'de_resort', 'de_royal', 'de_safehouse', 'de_santorini', 'de_seaside', 'de_season', 'de_shorttrain', 'de_stmarc', 'de_sugarcane', 'de_train', 'de_tulip', 'de_vertigo', 'de_zoo'-->];
 
             $( document ).ready(function() {
                 window.console.clear();
             });
 
-            function disableCell(mapName) {
+            function lock(mapName) {
+				mapName = mapName.toString();
+
+				$('#' + mapName).css('border-style', 'outset');
+				$('#' + mapName).css('border-color', 'green');
+				$('#' + mapName).css('border-width', '10px');
+				
+				if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
+                    $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/csgo/' + mapName + '.jpg")');
+                    $('#' + mapName).text(mapName);
+                    /*eliminatedMaps.remove(mapName);*/
+
+                    window.console.log(mapName + ' cell locked.');
+                }
+
+                if (eliminatedMaps.length < 1) {
+                    $('#backAction').css('visibility', 'hidden');
+                }
+			
+			};
+			
+			function disableCell(mapName) {
                 mapName = mapName.toString();
 
                 if (mapPool.indexOf(mapName) > -1) {
                     if (eliminatedMaps.length < mapPool.length - 1 && eliminatedMaps.indexOf(mapName) < 0) {
                         eliminatedMaps.push(mapName);
-                        $('#' + mapName).empty();
+                        /*$('#' + mapName).empty();*/
                         $('#' + mapName).css('background-image', 'none');
+						$('#' + mapName).css('border-style', 'outset');
+						$('#' + mapName).css('border-color', 'red');
+						$('#' + mapName).css('border-width', '10px');
 
                         window.console.log(mapName + ' cell removed.');
                     }
@@ -116,6 +143,9 @@
                 if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
                     $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/csgo/' + mapName + '.jpg")');
                     $('#' + mapName).text(mapName);
+					$('#' + mapName).css('border-style', 'outset');
+					$('#' + mapName).css('border-color', 'transparent');
+					$('#' + mapName).css('border-width', '10px');
                     eliminatedMaps.remove(mapName);
 
                     window.console.log(mapName + ' cell enabled.');
@@ -135,6 +165,8 @@
                     enableCell(eliminatedMaps[eliminatedMaps.length - 1]);
                 }
             };
+			
+		
         </script>
 	</body>
 
