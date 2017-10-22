@@ -20,12 +20,12 @@
             table tr {
                 background-position: left center;
                 background-size: cover;
-                height: 33%;
-                width: 20%;
+                height: 25%;
+                width: 25%;
             }
 
             table td {
-                width: 20%;
+                width: 25%;
             }
 		</style>
 	</head>
@@ -45,11 +45,11 @@
 				<td onclick="disableCell('Gibraltar')" onDblClick="lock('Gibraltar')" id="Gibraltar" style="background: url(./assets/images/map_picker/overwatch/gibraltar.jpg) no-repeat center;">
 					Gibraltar
 				</td>
+            </tr>
+            <tr>
 				<td onclick="disableCell('Hanamura')" onDblClick="lock('Hanamura')" id="Hanamura" style="background: url(./assets/images/map_picker/overwatch/hanamura.jpg) no-repeat center;">
 					Hanamura
 				</td>
-			</tr>
-			<tr>
 				<td onclick="disableCell('Hollywood')" onDblClick="lock('Hollywood')" id="Hollywood" style="background: url(./assets/images/map_picker/overwatch/hollywood.jpg) no-repeat center;">
 					Hollywood
 				</td>
@@ -59,21 +59,24 @@
 				<td onclick="disableCell('KingsRow')" onDblClick="lock('KingsRow')" id="KingsRow" style="background: url(./assets/images/map_picker/overwatch/kingsRow.jpg) no-repeat center;">
 					King's Row
 				</td>
+            </tr>
+            
+            <tr>
 				<td onclick="disableCell('Lijiang')" onDblClick="lock('Lijiang')" id="Lijiang" style="background: url(./assets/images/map_picker/overwatch/lijiang.jpg) no-repeat center;">
 					Lijiang
 				</td>
 				<td onclick="disableCell('Nepal')" onDblClick="lock('Nepal')" id="Nepal" style="background: url(./assets/images/map_picker/overwatch/nepal.jpg) no-repeat center;">
 					Nepal
 				</td>
-			</tr>
-			<tr>
-               
 				<td onclick="disableCell('Oasis')" onDblClick="lock('Oasis')" id="Oasis" style="background: url(./assets/images/map_picker/overwatch/oasis.jpg) no-repeat center;">
 					Oasis
 				</td>
                 <td onclick="disableCell('Numbani')" onDblClick="lock('Numbani')" id="Numbani" style="background: url(./assets/images/map_picker/overwatch/numbani.jpg) no-repeat center;">
 					Numbani
 				</td>
+            </tr>
+            
+            <tr>  
 				<td onclick="disableCell('Route66')" onDblClick="lock('Route66')" id="Route66" style="background: url(./assets/images/map_picker/overwatch/route66.jpg) no-repeat center;">
 					Route 66
 				</td>
@@ -82,6 +85,9 @@
 				</td>
                 <td onclick="disableCell('Junkertown')" onDblClick="lock('Junkertown')" id="Junkertown" style="background: url(./assets/images/map_picker/overwatch/junkertown.jpg) no-repeat center;">
 					Junkertown
+				</td>
+                <td onclick="disableCell('Horizon')" onDblClick="lock('Horizon')" id="Horizon" style="background: url(./assets/images/map_picker/overwatch/horizon.jpg) no-repeat center;">
+					Horizon
 				</td>
                 
                 
@@ -113,7 +119,7 @@
             };
 
             var eliminatedMaps = new Array();
-            var mapPool = ['Anubis', 'Dorado', 'Eichenwalde', 'Gibraltar', 'Hanamura', 'Hollywood', 'Ilios', 'KingsRow', 'Lijiang', 'Nepal', 'Numbani', 'Route66', 'Volskaya', 'Oasis', 'Junkertown'];
+            var mapPool = ['Anubis', 'Dorado', 'Eichenwalde', 'Gibraltar', 'Hanamura', 'Hollywood', 'Ilios', 'KingsRow', 'Lijiang', 'Nepal', 'Numbani', 'Route66', 'Volskaya', 'Oasis', 'Junkertown', 'Horizon'];
 
             $( document ).ready(function() {
                 window.console.clear();
