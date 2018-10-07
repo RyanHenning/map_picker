@@ -32,27 +32,27 @@
 	<body>
 		<table>
 			<tr>
-				<td  onclick="disableCell('Cache')" onDblClick="lock('Cache')"  id="Cache" style="background: url(./assets/images/map_picker/csgo/Cache.jpg) no-repeat center;"> 
+				<td  onclick="disableCell('Cache')" onDblClick="lock('Cache')"  id="Cache" style="background: url(./assets/images/map_picker/csgo/Cache.jpg)  no-repeat center; background-size: cover;">
 					Cache
 				</td>
-				<td onclick="disableCell('Cobblestone')" onDblClick="lock('Cobblestone')" id="Cobblestone" style="background: url(./assets/images/map_picker/csgo/Cobblestone.jpg) no-repeat center;">
-					Cobblestone
+				<td onclick="disableCell('Dust2')" onDblClick="lock('Dust2')" id="Dust2" style="background: url(./assets/images/map_picker/csgo/de_dust2.jpg) no-repeat center; background-size: cover;">
+					Dust II
 				</td>
-				<td onclick="disableCell('Inferno')" onDblClick="lock('Inferno')" id="Inferno" style="background: url(./assets/images/map_picker/csgo/Inferno.jpg) no-repeat center;">
+				<td onclick="disableCell('Inferno')" onDblClick="lock('Inferno')" id="Inferno" style="background: url(./assets/images/map_picker/csgo/Inferno.jpg) no-repeat center; background-size: cover;">
 					Inferno
 				</td>
-				<td onclick="disableCell('Mirage')" onDblClick="lock('Mirage')" id="Mirage" style="background: url(./assets/images/map_picker/csgo/Mirage.jpg) no-repeat center;">
+				<td onclick="disableCell('Mirage')" onDblClick="lock('Mirage')" id="Mirage" style="background: url(./assets/images/map_picker/csgo/Mirage.jpg) no-repeat center; background-size: cover;">
 					Mirage
 				</td>
 			</tr>
 			<tr>
-				<td onclick="disableCell('Overpass')" onDblClick="lock('Overpass')" id="Overpass" style="background: url(./assets/images/map_picker/csgo/Overpass.jpg) no-repeat center;">
+				<td onclick="disableCell('Overpass')" onDblClick="lock('Overpass')" id="Overpass" style="background: url(./assets/images/map_picker/csgo/Overpass.jpg) no-repeat center; background-size: cover;">
 					Overpass
 				</td>
-				<td onclick="disableCell('Nuke')" onDblClick="lock('Nuke')" id="Nuke" style="background: url(./assets/images/map_picker/csgo/Nuke.jpg) no-repeat center;">
+				<td onclick="disableCell('Nuke')" onDblClick="lock('Nuke')" id="Nuke" style="background: url(./assets/images/map_picker/csgo/Nuke.jpg) no-repeat center; background-size: cover;">
 					Nuke
 				</td>
-				<td onclick="disableCell('Train')" onDblClick="lock('Train')" id="Train" style="background: url(./assets/images/map_picker/csgo/Train.jpg) no-repeat center;">
+				<td onclick="disableCell('Train')" onDblClick="lock('Train')" id="Train" style="background: url(./assets/images/map_picker/csgo/Train.jpg) no-repeat center; background-size: cover;">
 					Train
 				</td>
 				<td align="right">
@@ -71,8 +71,8 @@
 		</table>
 
 		<script>
-		
-		
+
+
             // Add function that entry from array by value
             Array.prototype.remove = function() {
                 var what, a = arguments, L = a.length, ax;
@@ -85,7 +85,7 @@
                 return this;
             };
 
-            
+
 			var eliminatedMaps = new Array();
             var mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone', 'Inferno'];
 			<!--'de_ali', 'de_aztec', 'de_bank', 'de_bazaar', 'de_blackgold', 'de_cache', 'de_castle', 'de_cbble', 'de_coast', 'de_dust', 'de_dust2', 'de_empire', 'de_facade', 'de_favela', 'de_lake', 'de_log', 'de_marquis', 'de_mikla', 'de_mirage', 'de_mist', 'de_nuke', 'de_overgrown', 'de_overpass', 'de_rails', 'de_resort', 'de_royal', 'de_safehouse', 'de_santorini', 'de_seaside', 'de_season', 'de_shorttrain', 'de_stmarc', 'de_sugarcane', 'de_train', 'de_tulip', 'de_vertigo', 'de_zoo'-->];
@@ -100,7 +100,7 @@
 				$('#' + mapName).css('border-style', 'outset');
 				$('#' + mapName).css('border-color', 'green');
 				$('#' + mapName).css('border-width', '10px');
-				
+
 				if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
                     $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/csgo/' + mapName + '.jpg")');
                     $('#' + mapName).text(mapName);
@@ -112,9 +112,9 @@
                 if (eliminatedMaps.length < 1) {
                     $('#backAction').css('visibility', 'hidden');
                 }
-			
+
 			};
-			
+
 			function disableCell(mapName) {
                 mapName = mapName.toString();
 
@@ -165,8 +165,8 @@
                     enableCell(eliminatedMaps[eliminatedMaps.length - 1]);
                 }
             };
-			
-		
+
+
         </script>
 	</body>
 
