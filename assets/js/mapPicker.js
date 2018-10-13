@@ -11,7 +11,7 @@ function gameSelectionTempalate(game) {
 
 function mapSelectionTemplate(map) {
     return `
-        <div onclick="disableCell('${map.id}')" onDblClick="lock('${map.id}')" id="${map.id}" class="maps_selector" style="background: url(${map.image}) ">
+        <div onclick="disableCell('${map.id}')" onDblClick="lock('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image}) ">
             <p>${map.id}</p>
         </div>
     `;

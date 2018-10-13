@@ -8,8 +8,16 @@ body {
 
   background: url(../images/map_picker/background.jpg) center;
 
-  color: #f99e1a;
+  color: #418bca;
   font-size: 140%;
+
+ font-family:  leagueGothic;
+ text-shadow: -2px 0px 8px #333, 0px 0px 5px #000;
+}
+
+@font-face {
+  font-family: leagueGothic;
+  src: url(../fonts/leaguegothic-regular-webfont.woff);
 }
 
 /* unvisited link */
@@ -18,7 +26,7 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: #f99e1a;
+  color: #418bca;
   text-decoration: none;
 }
 
@@ -101,5 +109,6 @@ img {
 
 .maps_selector p {
   max-width: 100%;
+  text-transform: uppercase;
 
 }
