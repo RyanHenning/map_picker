@@ -1,11 +1,11 @@
-{
-  "games": {
-    "game": [
+
+const games = [
       {
         "id": 1,
         "name": "CSGO",
         "background_image": "./assets/images/map_picker/csgo/logo_background.jpg",
         "logo": "./assets/images/map_picker/csgo/logo_white.png",
+        "url": "./mapPicker-CSGO.html",
         "maps": [
           {
             "id": "cache",
@@ -42,6 +42,7 @@
         "name": "Overwatch",
         "background_image": "./assets/images/map_picker/overwatch/logo_background.jpg",
         "logo": "./assets/images/map_picker/overwatch/logo_white.png",
+        "url": "./mapPicker-Overwatch.html",
         "maps": [
           {
             "id": "anubis",
@@ -113,6 +114,5 @@
           }
         ]
       }
-    ]
-  }
-}
+
+]

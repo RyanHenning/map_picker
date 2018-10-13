@@ -58,9 +58,18 @@ img {
 
 /* FLEXBOX */
 
-.container {
+#game_container {
   display: flex;
+  height: 100%;
 }
 
-.main-games {
+.game_selector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.game_selector a,
+.game_selector img {
+  max-width: 100%;
 }
