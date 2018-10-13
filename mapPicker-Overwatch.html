@@ -11,27 +11,22 @@
 
 		<link rel="shortcut icon" href="./assets/images/favicon.ico">
 
-		<script src="./assets/js/jquery-3.min.js"></script>
+		<script src="./assets/data/mapPickerData.js"></script>
+        <script src="./assets/js/jquery-3.min.js"></script>
+        <script src="./assets/js/mapPicker.js"></script>
 
 		<link rel="stylesheet" href="./assets/stylesheets/font-awesome.min.css">
 		<link rel="stylesheet" href="./assets/stylesheets/mapPicker.css">
 
-		<style>
-            table tr {
-                background-position: left center;
-                background-size: cover;
-                height: 25%;
-                width: 20%;
-            }
 
-            table td {
-                width: 20%;
-            }
-		</style>
 	</head>
 
-	<body>
-		<table>
+    <body onload="loadMaps(1)" >
+
+        <div id="maps_container">
+        </div>
+
+		<!-- <table>
 			<tr>
 				<td onclick="disableCell('Anubis')" onDblClick="lock('Anubis')" id="Anubis" style="background: url(./assets/images/map_picker/overwatch/anubis.jpg) no-repeat center; background-size: cover;">
 					Anubis
@@ -111,7 +106,7 @@
                     </div>
 				</td>
 			</tr>
-		</table>
+		</table> -->
 
 		<script>
             // Add function that entry from array by value

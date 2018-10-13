@@ -21,7 +21,7 @@ const games = [
           },
           {
             "id": "mirage",
-            "image": "./assets/images/map_picker/csgo/Mirrage.jpg"
+            "image": "./assets/images/map_picker/csgo/Mirage.jpg"
           },
           {
             "id": "overpass",
