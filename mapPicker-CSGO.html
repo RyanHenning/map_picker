@@ -11,7 +11,7 @@
 		<link rel="shortcut icon" href="./assets/images/favicon.ico">
 
 		<script src="./assets/data/mapPickerData.js"></script>
-        <script src="./assets/js/jquery-3.min.js"></script>
+        <!-- <script src="./assets/js/jquery-3.min.js"></script> -->
         <script src="./assets/js/mapPicker.js"></script>
 
 		<link rel="stylesheet" href="./assets/stylesheets/font-awesome.min.css">
@@ -23,46 +23,6 @@
 
         <div id="maps_container">
         </div>
-
-		<!-- <table>
-			<tr>
-				<td  onclick="disableCell('Cache')" onDblClick="lock('Cache')"  id="Cache" style="background: url(./assets/images/map_picker/csgo/Cache.jpg)  no-repeat center; background-size: cover;">
-					Cache
-				</td>
-				<td onclick="disableCell('Dust_II')" onDblClick="lock('Dust_II')" id="Dust_II" style="background: url(./assets/images/map_picker/csgo/Dust_II.jpg) no-repeat center; background-size: cover;">
-					Dust II
-				</td>
-				<td onclick="disableCell('Inferno')" onDblClick="lock('Inferno')" id="Inferno" style="background: url(./assets/images/map_picker/csgo/Inferno.jpg) no-repeat center; background-size: cover;">
-					Inferno
-				</td>
-				<td onclick="disableCell('Mirage')" onDblClick="lock('Mirage')" id="Mirage" style="background: url(./assets/images/map_picker/csgo/Mirage.jpg) no-repeat center; background-size: cover;">
-					Mirage
-				</td>
-			</tr>
-			<tr>
-				<td onclick="disableCell('Overpass')" onDblClick="lock('Overpass')" id="Overpass" style="background: url(./assets/images/map_picker/csgo/Overpass.jpg) no-repeat center; background-size: cover;">
-					Overpass
-				</td>
-				<td onclick="disableCell('Nuke')" onDblClick="lock('Nuke')" id="Nuke" style="background: url(./assets/images/map_picker/csgo/Nuke.jpg) no-repeat center; background-size: cover;">
-					Nuke
-				</td>
-				<td onclick="disableCell('Train')" onDblClick="lock('Train')" id="Train" style="background: url(./assets/images/map_picker/csgo/Train.jpg) no-repeat center; background-size: cover;">
-					Train
-				</td>
-				<td align="right">
-                    <div id="homeAction">
-                        <a href="./mapPicker.html">
-                            &nbsp;<i class="fa fa-home fa-2x"></i>&nbsp;
-                        </a>
-                    </div>
-
-                    <div id="backAction" onClick="resetPage();">
-                        &nbsp;
-                    </div>
-				</td>
-			</tr>
-
-		</table> -->
 
 		<script>
 
@@ -82,7 +42,7 @@
 
 			var eliminatedMaps = new Array();
             var mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone', 'Inferno'];
-			<!--'de_ali', 'de_aztec', 'de_bank', 'de_bazaar', 'de_blackgold', 'de_cache', 'de_castle', 'de_cbble', 'de_coast', 'de_dust', 'de_dust2', 'de_empire', 'de_facade', 'de_favela', 'de_lake', 'de_log', 'de_marquis', 'de_mikla', 'de_mirage', 'de_mist', 'de_nuke', 'de_overgrown', 'de_overpass', 'de_rails', 'de_resort', 'de_royal', 'de_safehouse', 'de_santorini', 'de_seaside', 'de_season', 'de_shorttrain', 'de_stmarc', 'de_sugarcane', 'de_train', 'de_tulip', 'de_vertigo', 'de_zoo'-->];
+			// 'de_ali', 'de_aztec', 'de_bank', 'de_bazaar', 'de_blackgold', 'de_cache', 'de_castle', 'de_cbble', 'de_coast', 'de_dust', 'de_dust2', 'de_empire', 'de_facade', 'de_favela', 'de_lake', 'de_log', 'de_marquis', 'de_mikla', 'de_mirage', 'de_mist', 'de_nuke', 'de_overgrown', 'de_overpass', 'de_rails', 'de_resort', 'de_royal', 'de_safehouse', 'de_santorini', 'de_seaside', 'de_season', 'de_shorttrain', 'de_stmarc', 'de_sugarcane', 'de_train', 'de_tulip', 'de_vertigo', 'de_zoo'-->];
 
             $( document ).ready(function() {
                 window.console.clear();
@@ -91,9 +51,6 @@
             function lock(mapName) {
 				mapName = mapName.toString();
 
-				$('#' + mapName).css('border-style', 'outset');
-				$('#' + mapName).css('border-color', 'green');
-				$('#' + mapName).css('border-width', '10px');
 
 				if (mapPool.indexOf(mapName) > -1 && eliminatedMaps.indexOf(mapName) > -1) {
                     $('#' + mapName).css('background-image', 'url("./assets/images/map_picker/csgo/' + mapName + '.jpg")');
