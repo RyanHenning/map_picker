@@ -1,6 +1,6 @@
 // Global Variables
-let eliminatedMaps = new Array();
-var mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone', 'Inferno'];
+ eliminatedMaps = new Array();
+ mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone', 'Inferno'];
 
 /////////////////////////////////
 // Game Selection Page Functions
@@ -33,15 +33,28 @@ function gameSelectionTempalate(game) {
 // Map Selector Page Functions
 ////////////////////////////////
 
+// initialize map selection global variables
+let numberOfRounds = 0;
+let gameTitle = '';
+
 // initialize game maps
 function loadMaps() {
 
-    // grab url parameter
-    url = location.search;
-    gameID = url.substring(8).split('?gameID=');
+    url = location.search; // returns query part of url
+    urlParameters = url.substring(1).split('&'); // split params into an array
+    //console.log(urlParameters);
+
+    //get values in urlParametersArray
+    gameID = urlParameters[0].substring(7);
+    numberOfRounds = urlParameters[1].substring(7);
+
+
 
     // grab data from mapPickerData JSON via ID
     let gameData = games[gameID].maps;
+    let gameName = games[gameID].name;
+
+    console.log("Number of Rounds: " + numberOfRounds + " for " + gameName);
 
     // populate the list of maps
     let mapsList = document.getElementById("maps_container");
@@ -52,7 +65,7 @@ function loadMaps() {
 // template
 function mapSelectionTemplate(map) {
     return `
-        <div onclick="disableCell('${map.id}')" onDblClick="lock('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image}) ">
+        <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image}) ">
             <p>${map.id}</p>
         </div>
     `;
@@ -77,55 +90,50 @@ var buttonTemplate = `
 // Game Map Selection Functions
 ////////////////////////////////
 
-function lock(mapID) {
-    // mapID = mapID.toString();
+// Initialize Global Game Map Variables
+let numberOfClicks = 0;
+var selectedMaps = [];
 
+
+// function to count clicks & prevent double click causing single click to fire.
+function countClicks(mapID) {
+
+    numberOfClicks++;
+
+    if (numberOfClicks == 1) {
+        setTimeout(function () {
+            if (numberOfClicks == 1) {
+                // if single click, call lock
+                lock(mapID);
+            } else {
+                // if double click, call disabled
+                disableCell(mapID);
+            }
+            numberOfClicks = 0;
+        }, 500);
+    }
+}
+
+function lock(mapID) {
+
+    // set cell styling
     document.getElementById(mapID).classList.remove("disabled");
     document.getElementById(mapID).classList.add("enabled");
 
-    if (mapPool.indexOf(mapID) > -1 && eliminatedMaps.indexOf(mapID) > -1) {
-        document.getElementById(mapID).classList.remove("disabled");
-        document.getElementById(mapID).classList.add("enabled");
+    // log map that is locked
+    console.log(mapID + ' cell locked.');
+    selectedMaps.push(mapID);
 
-            /*eliminatedMaps.remove(mapID);*/
+    console.log(selectedMaps);
 
-        window.console.log(mapID + ' cell locked.');
-    }
-
-    if (eliminatedMaps.length > 1) {
-        document.getElementById('backAction').setAttribute('style', 'visibility:visible;');
-
-    }
-    // else {
-    //     document.getElementById('backAction').setAttribute('style', 'visibility:hidden;');
-    // }
-
-};
+}
 
 
 function disableCell(mapID) {
 
     document.getElementById(mapID).classList.remove("enabled");
-            document.getElementById(mapID).classList.add("disabled");
+    document.getElementById(mapID).classList.add("disabled");
 
-    let eliminatedMaps = new Array();
-    var mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone', 'Inferno'];
-
-    if (mapPool.indexOf(mapID) > -1) {
-        if (eliminatedMaps.length < mapPool.length - 1 && eliminatedMaps.indexOf(mapID) < 0) {
-            eliminatedMaps.push(mapID);
-
-
-
-
-            window.console.log(mapID + ' cell removed.');
-        }
-    }
-
-    // if (eliminatedMaps.length == mapPool.length - 1) {
-    //     $('#backAction').html('&nbsp;<i class="fa fa-undo fa-2x"></i>&nbsp;'); /* REST */
-    // } else if (eliminatedMaps.length > 0) {
-    //     $('#backAction').css('visibility', 'visible');
-    //     $('#backAction').html('&nbsp;<i class="fa fa-step-backward fa-2x"></i>&nbsp;');  /* STEP BACKWARDS */
-    // }
-};
+    // log map that is disabled
+    window.console.log(mapID + ' cell removed.');
+}

@@ -4,7 +4,7 @@ const games = [
         "name": "CSGO",
         "background_image": "./assets/images/map_picker/csgo/logo_background.jpg",
         "logo": "./assets/images/map_picker/csgo/logo_white.png",
-        "url": "./mapPicker-gameSelector.html?gameID=0",
+        "url": "./mapPicker-gameSelector.html?gameID=0&rounds=3",
         "maps": [
           {
             "id": "cache",
@@ -41,7 +41,7 @@ const games = [
         "name": "Overwatch",
         "background_image": "./assets/images/map_picker/overwatch/logo_background.jpg",
         "logo": "./assets/images/map_picker/overwatch/logo_white.png",
-        "url": "./mapPicker-gameSelector.html?gameID=1",
+        "url": "./mapPicker-gameSelector.html?gameID=1&rounds=3",
         "maps": [
           {
             "id": "anubis",

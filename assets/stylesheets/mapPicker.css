@@ -8,7 +8,7 @@ body {
 
   background: url(../images/map_picker/background.jpg) center;
 
-  color: #418bca;
+  color: #fff;
   font-size: 140%;
 
  font-family:  leagueGothic;
@@ -26,7 +26,8 @@ a:link,
 a:visited,
 a:hover,
 a:active {
-  color: #418bca;
+  /* color: #418bca; */
+  color: #fff;
   text-decoration: none;
 }
 
