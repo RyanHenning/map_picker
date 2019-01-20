@@ -108,10 +108,11 @@ img {
   outline: none; /*sometime javascript clicks cause weird outline*/
 }
 
-.maps_selector p, #homeAction, #backAction {
+.maps_selector p, #homeAction, #backAction, #selectionComplete {
   max-width: 100%;
   text-transform: uppercase;
   user-select: none;
+  padding: .75em;
 }
 
 

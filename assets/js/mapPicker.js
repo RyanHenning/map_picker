@@ -1,7 +1,3 @@
-// Global Variables
- eliminatedMaps = new Array();
- mapPool = ['Dust_II', 'Nuke', 'Cache', 'Mirage', 'Overpass', 'Train', 'Cobblestone', 'Inferno'];
-
 /////////////////////////////////
 // Game Selection Page Functions
 ////////////////////////////////
@@ -35,7 +31,8 @@ function gameSelectionTempalate(game) {
 
 // initialize map selection global variables
 let numberOfRounds = 0;
-let gameTitle = '';
+let numberOfMaps = 0;
+let gameID = 0;
 
 // initialize game maps
 function loadMaps() {
@@ -48,13 +45,12 @@ function loadMaps() {
     gameID = urlParameters[0].substring(7);
     numberOfRounds = urlParameters[1].substring(7);
 
-
-
     // grab data from mapPickerData JSON via ID
     let gameData = games[gameID].maps;
     let gameName = games[gameID].name;
 
     console.log("Number of Rounds: " + numberOfRounds + " for " + gameName);
+    console.log("Map Pool Size: " + games[gameID].maps.length);
 
     // populate the list of maps
     let mapsList = document.getElementById("maps_container");
@@ -76,12 +72,16 @@ var buttonTemplate = `
     <div class="maps_selector">
         <div id="homeAction" >
             <a href="./mapPicker.html">
-                &nbsp;<i class="fa fa-home fa-2x"></i>&nbsp;
+               <i class="fa fa-home"></i>
             </a>
         </div>
 
-        <div id="backAction" onClick="resetPage();" style="visibility:hidden">
-            <i class="fa fa-undo fa-2x"></i>
+        <div id="backAction" onClick="resetPage();">
+            <i class="fa fa-undo"></i>
+        </div>
+
+        <div id="selectionComplete" onClick="selectionComplete();">
+            <i class="fa fa-check"></i>
         </div>
     </div>`;
 
@@ -92,8 +92,8 @@ var buttonTemplate = `
 
 // Initialize Global Game Map Variables
 let numberOfClicks = 0;
-var selectedMaps = [];
-
+let selectedMaps = [];
+let eliminatedMaps = [];
 
 // function to count clicks & prevent double click causing single click to fire.
 function countClicks(mapID) {
@@ -115,7 +115,6 @@ function countClicks(mapID) {
 }
 
 function lock(mapID) {
-
     // set cell styling
     document.getElementById(mapID).classList.remove("disabled");
     document.getElementById(mapID).classList.add("enabled");
@@ -123,17 +122,35 @@ function lock(mapID) {
     // log map that is locked
     console.log(mapID + ' cell locked.');
     selectedMaps.push(mapID);
-
-    console.log(selectedMaps);
-
 }
 
 
 function disableCell(mapID) {
-
+    // set cell styling
     document.getElementById(mapID).classList.remove("enabled");
     document.getElementById(mapID).classList.add("disabled");
 
     // log map that is disabled
-    window.console.log(mapID + ' cell removed.');
+    console.log(mapID + ' cell removed.');
+    eliminatedMaps.push(mapID);
+}
+
+function resetPage() {
+    if (eliminatedMaps.length + 1 >= games[gameID].maps.length ) {
+        while (eliminatedMaps.length > 0) {
+            // reset styling
+            console.log(eliminatedMaps[eliminatedMaps.length - 1] + "was reset");
+            document.getElementById(eliminatedMaps[eliminatedMaps.length - 1]).classList.remove("disabled");
+            // remove last item in eliminated map array
+            eliminatedMaps.pop()
+        }
+    } else if (eliminatedMaps.length > 0) {
+        document.getElementById(eliminatedMaps[eliminatedMaps.length - 1]).classList.remove("disabled");
+        console.log(eliminatedMaps[eliminatedMaps.length - 1] + "was reset");
+    }
+}
+
+function selectionComplete() {
+    console.log("Maps Selected: " + selectedMaps);
+    console.log("Maps Eliminated: " + eliminatedMaps);
 }
