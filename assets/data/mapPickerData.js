@@ -9,37 +9,44 @@ const games = [
           {
             "id": "cache",
             "image": "./assets/images/map_picker/csgo/Cache.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "dust_II",
             "image": "./assets/images/map_picker/csgo/Dust_II.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "inferno",
             "image": "./assets/images/map_picker/csgo/Inferno.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "mirage",
             "image": "./assets/images/map_picker/csgo/Mirage.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "overpass",
             "image": "./assets/images/map_picker/csgo/Overpass.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "nuke",
             "image": "./assets/images/map_picker/csgo/Nuke.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "train",
             "image": "./assets/images/map_picker/csgo/Train.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           }
         ]
       },

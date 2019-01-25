@@ -2,6 +2,7 @@
 // Global Variables - used in multiple sections
 /////////////////////////////////////////////////
 let finalMaps = []
+let mapSelectedOrder = 0;
 
 /////////////////////////////////
 // Game Selection Page Functions
@@ -63,7 +64,7 @@ function loadMaps() {
 
     // populate finalMaps array with default values
     // finalMaps.push(gameData.map(x => ({mapID:x.id, action: "default" })));
-    finalMaps = gameData.map(x => ({mapID:x.id, action: "default" }));
+    finalMaps = gameData.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
     console.log(finalMaps);
 }
 
@@ -106,7 +107,7 @@ var buttonTemplate = `
 
 // Initialize Global Game Map Variables
 let numberOfClicks = 0;
-let selectedMaps = [];
+// // let selectedMaps = [];
 let eliminatedMaps = [];
 
 
@@ -134,20 +135,10 @@ function lock(mapID) {
     document.getElementById(mapID).classList.remove("disabled");
     document.getElementById(mapID).classList.add("enabled");
 
-    // log map that is locked
-    selectedMaps.push(mapID.toUpperCase());
-    // finalMaps.push({ mapID: mapID, action: "selected" });
+    // update the selected map order and push values arrays
+    mapSelectedOrder = mapSelectedOrder + 1;
+    updateMapAction(mapID, "selected", mapSelectedOrder );
 
-
-     // find the mapID in the finalmap array
-    let matchedItem = finalMaps.find(x => x.mapID == mapID);
-    // find the index of the matched value
-    let matchedItemByIndex = finalMaps.indexOf(matchedItem)
-    // update the value
-    finalMaps[matchedItemByIndex].action = "selected";
-    eliminatedMaps.pop();
-
-    console.log(finalMaps);
 }
 
 
@@ -157,13 +148,11 @@ function disableCell(mapID) {
     document.getElementById(mapID).classList.add("disabled");
 
     eliminatedMaps.push(mapID);
-    // find the mapID in the finalmap array
-    let matchedItem = finalMaps.find(x => x.mapID == mapID);
-    // find the index of the matched value
-    let matchedItemByIndex = finalMaps.indexOf(matchedItem)
-    // update the value
-    finalMaps[matchedItemByIndex].action = "disabled";
-    console.log(finalMaps);
+
+    // update the selected map order and push values arrays
+    mapSelectedOrder = mapSelectedOrder + 1;
+    updateMapAction(mapID, "disabled", mapSelectedOrder);
+
 
 }
 
@@ -173,40 +162,34 @@ function resetPage() {
 
         // get the last removed map from eliminatedMaps array
         let lastMap = eliminatedMaps[eliminatedMaps.length - 1];
-        // find the last eliminated in the final map array
-        let matchedItem = finalMaps.find(x => x.mapID == lastMap);
-        // find the index of the matched value
-        let arrayIndexToRemove = finalMaps.indexOf(matchedItem)
-        // update the value
-        finalMaps[arrayIndexToRemove].action = "default";
+        updateMapAction(lastMap, "default");
         eliminatedMaps.pop();
-
-        console.log(finalMaps);
 
     }
 }
 
 function selectionComplete() {
-    let selectedMaps = [];
-    // reset
+    // reset message
     document.getElementById("message-center").innerHTML = "";
-    console.log(finalMaps)
+
+    let finalMapsList = []
 
     for (i in finalMaps) {
         // console.log(finalMaps[i].mapID + ": " + finalMaps[i].action );
-        selectedMaps.push(finalMaps[i].mapID + ": " + finalMaps[i].action );
+        finalMapsList.push(finalMaps[i].mapID + ": " + finalMaps[i].action);
+        // console.log(finalMaps[i].mapID)
     }
-    document.getElementById("message-center").innerHTML = selectedMaps;
+    document.getElementById("message-center").innerHTML = finalMapsList;
+    console.log(finalMaps);
+}
 
-
-    // if (finalMaps.length > 0) {
-    //     for (i in finalMaps) {
-    //         // console.log(finalMaps[i].mapID + ": " + finalMaps[i].action );
-    //         selectedMaps.push(finalMaps[i].mapID + ": " + finalMaps[i].action );
-    //     }
-    //     document.getElementById("message-center").innerHTML = selectedMaps;
-    // } else {
-    //     document.getElementById("message-center").innerHTML = "You must eliminate or select maps first!";
-    // }
-
+function updateMapAction(mapID, action, mapSelectedOrder) {
+    // find the mapID in the finalMap array
+    let matchedItem = finalMaps.find(x => x.mapID == mapID);
+    // find the index of the matched value
+    let matchedItemIndex = finalMaps.indexOf(matchedItem)
+    // update the value
+    finalMaps[matchedItemIndex].action = action;
+    // update the mapOrder
+    finalMaps[matchedItemIndex].selectedOrder = mapSelectedOrder;
 }
