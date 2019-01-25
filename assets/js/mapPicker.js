@@ -1,3 +1,9 @@
+/////////////////////////////////////////////////
+// Global Variables - used in multiple sections
+/////////////////////////////////////////////////
+let finalMaps = []
+let mapSelectedOrder = 0;
+
 /////////////////////////////////
 // Game Selection Page Functions
 ////////////////////////////////
@@ -23,7 +29,6 @@ function gameSelectionTempalate(game) {
 
    `;
 }
-
 
 /////////////////////////////////
 // Map Selector Page Functions
@@ -56,6 +61,10 @@ function loadMaps() {
     let mapsList = document.getElementById("maps_container");
     mapsList.innerHTML = `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
 
+    // populate finalMaps array with default values
+    // finalMaps.push(gameData.map(x => ({mapID:x.id, action: "default" })));
+    finalMaps = gameData.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
+    console.log(finalMaps);
 }
 
 // template
@@ -69,22 +78,26 @@ function mapSelectionTemplate(map) {
 
 // template
 var buttonTemplate = `
-    <div class="maps_selector">
-        <div id="homeAction" >
-            <a href="./mapPicker.html">
-               <i class="fa fa-home"></i>
-            </a>
-        </div>
+<div class="maps_selector" >
+    <div class="control_section" >
+        <p id="message-center">Double-Click to Eliminate. Single-Click to Select.</p>
+        <div class="button-section">
+            <div id="homeAction" >
+                <a href="./mapPicker.html">
+                <i class="fa fa-home"></i>
+                </a>
+            </div>
 
-        <div id="backAction" onClick="resetPage();">
-            <i class="fa fa-undo"></i>
-        </div>
+            <div id="backAction" onClick="resetPage();">
+                <i class="fa fa-undo"></i>
+            </div>
 
-        <div id="selectionComplete" onClick="selectionComplete();">
-            <i class="fa fa-check"></i>
+            <div id="selectionComplete" onClick="selectionComplete();">
+                <i class="fa fa-check"></i>
+            </div>
         </div>
-    </div>`;
-
+    </div>
+`;
 
 /////////////////////////////////
 // Game Map Selection Functions
@@ -92,8 +105,6 @@ var buttonTemplate = `
 
 // Initialize Global Game Map Variables
 let numberOfClicks = 0;
-let selectedMaps = [];
-let eliminatedMaps = [];
 
 // function to count clicks & prevent double click causing single click to fire.
 function countClicks(mapID) {
@@ -119,9 +130,10 @@ function lock(mapID) {
     document.getElementById(mapID).classList.remove("disabled");
     document.getElementById(mapID).classList.add("enabled");
 
-    // log map that is locked
-    console.log(mapID + ' cell locked.');
-    selectedMaps.push(mapID);
+
+    // update the selected map order and push values arrays
+    mapSelectedOrder = mapSelectedOrder + 1;
+    updateMapAction(mapID, "selected", mapSelectedOrder );
 }
 
 
@@ -130,27 +142,58 @@ function disableCell(mapID) {
     document.getElementById(mapID).classList.remove("enabled");
     document.getElementById(mapID).classList.add("disabled");
 
-    // log map that is disabled
-    console.log(mapID + ' cell removed.');
-    eliminatedMaps.push(mapID);
+    // update the selected map order and push values arrays
+    mapSelectedOrder = mapSelectedOrder + 1;
+    updateMapAction(mapID, "disabled", mapSelectedOrder);
 }
 
 function resetPage() {
-    if (eliminatedMaps.length + 1 >= games[gameID].maps.length ) {
-        while (eliminatedMaps.length > 0) {
-            // reset styling
-            console.log(eliminatedMaps[eliminatedMaps.length - 1] + "was reset");
-            document.getElementById(eliminatedMaps[eliminatedMaps.length - 1]).classList.remove("disabled");
-            // remove last item in eliminated map array
-            eliminatedMaps.pop()
+    if (mapSelectedOrder > 0) {
+        // find the map based on the numberOfClicks
+        let matchedItem = finalMaps.find(x => x.selectedOrder == mapSelectedOrder);
+        // find the index of the matched value
+        let matchedItemIndex = finalMaps.indexOf(matchedItem)
+        // reset the selectedOrder
+        finalMaps[matchedItemIndex].selectedOrder = "";
+        // reset the map action
+        finalMaps[matchedItemIndex].action = "default";
+        // remove styling
+        tempMapID = finalMaps[matchedItemIndex].mapID;
+        if (document.getElementById(tempMapID).classList.contains("disabled")) {
+            document.getElementById(tempMapID).classList.remove("disabled");
         }
-    } else if (eliminatedMaps.length > 0) {
-        document.getElementById(eliminatedMaps[eliminatedMaps.length - 1]).classList.remove("disabled");
-        console.log(eliminatedMaps[eliminatedMaps.length - 1] + "was reset");
+        if (document.getElementById(tempMapID).classList.contains("enabled")) {
+            document.getElementById(tempMapID).classList.remove("enabled");
+        }
+        // reduce the value of mapSelectedOrder
+        mapSelectedOrder = mapSelectedOrder - 1;
     }
 }
 
 function selectionComplete() {
-    console.log("Maps Selected: " + selectedMaps);
-    console.log("Maps Eliminated: " + eliminatedMaps);
+    // reset message
+    document.getElementById("message-center").innerHTML = "";
+
+    let finalMapsList = []
+    let sortedMaps = finalMaps.sort(function (a, b) {
+        return a.selectedOrder - b.selectedOrder;
+    });
+
+    for (i in sortedMaps) {
+        finalMapsList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": " + sortedMaps[i].action);
+    }
+    document.getElementById("message-center").innerHTML = finalMapsList;
+    console.log(finalMaps);
+}
+
+
+function updateMapAction(mapID, action, mapSelectedOrder) {
+    // find the mapID in the finalMap array
+    let matchedItem = finalMaps.find(x => x.mapID == mapID);
+    // find the index of the matched value
+    let matchedItemIndex = finalMaps.indexOf(matchedItem)
+    // update the value
+    finalMaps[matchedItemIndex].action = action;
+    // update the mapOrder
+    finalMaps[matchedItemIndex].selectedOrder = mapSelectedOrder;
 }

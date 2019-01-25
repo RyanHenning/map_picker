@@ -103,17 +103,52 @@ img {
   background-size: cover !important;
   flex-basis: 25%;
   position: relative;
-  box-sizing: border-box;
   height: auto;
+  width: 100%;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.control_section{
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  outline: none; /*sometime javascript clicks cause weird outline*/
+
+}
+
+.control_section p {
+  font-size: 14px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: calc(100% - 1em);
+  text-align: center;
+  margin: 0;
+  height: 50%;
+  padding: .5em;
+
+}
+
+.button-section {
+  flex-direction: row;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-around;
+  flex-basis: 25%;
+  position: relative;
+  height: auto;
+  width: 100%;
   outline: none; /*sometime javascript clicks cause weird outline*/
 }
 
-.maps_selector p, #homeAction, #backAction, #selectionComplete {
+/* .maps_selector p, #homeAction, #backAction, #selectionComplete {
   max-width: 100%;
-  text-transform: uppercase;
-  user-select: none;
+
   padding: .75em;
-}
+} */
 
 
 
