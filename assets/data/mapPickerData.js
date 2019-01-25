@@ -60,87 +60,104 @@ const games = [
           {
             "id": "anubis",
             "image": "./assets/images/map_picker/overwatch/anubis.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "dorado",
             "image": "./assets/images/map_picker/overwatch/dorado.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "eichenwalde",
             "image": "./assets/images/map_picker/overwatch/eichenwalde.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "gibraltar",
             "image": "./assets/images/map_picker/overwatch/gibraltar.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "hanamura",
             "image": "./assets/images/map_picker/overwatch/hanamura.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "hollywood",
             "image": "./assets/images/map_picker/overwatch/hollywood.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "kingsRow",
             "image": "./assets/images/map_picker/overwatch/kingsRow.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "lijiang",
             "image": "./assets/images/map_picker/overwatch/lijiang.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "nepal",
             "image": "./assets/images/map_picker/overwatch/nepal.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "oasis",
             "image": "./assets/images/map_picker/overwatch/oasis.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "numbani",
             "image": "./assets/images/map_picker/overwatch/numbani.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "volskaya",
             "image": "./assets/images/map_picker/overwatch/volskaya.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "junkertown",
             "image": "./assets/images/map_picker/overwatch/junkertown.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "horizon",
             "image": "./assets/images/map_picker/overwatch/horizon.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "blizzardworld",
             "image": "./assets/images/map_picker/overwatch/blizzardworld.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "rialto",
             "image": "./assets/images/map_picker/overwatch/rialto.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           },
           {
             "id": "busan",
             "image": "./assets/images/map_picker/overwatch/busan.jpg",
-            "action": "default"
+            "action": "default",
+            "selectedOrder":  ""
           }
         ]
       }
