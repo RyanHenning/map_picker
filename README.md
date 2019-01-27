@@ -9,4 +9,5 @@ Add images in `assets->images->map_picker->game-name-folder`
 ## Using Map Picker
 Clone this repo to your local machine. Open `mapPicker.html` in your browser and navigate around.
 
-
+## Supported Browsers.
+This application uses newer Javascript functionality that is not supported by Internet Explorer. We will not be polyfilling or adding back-support for Internet Explorer.
