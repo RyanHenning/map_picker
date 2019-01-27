@@ -44,7 +44,6 @@ function loadMaps() {
 
     url = location.search; // returns query part of url
     urlParameters = url.substring(1).split('&'); // split params into an array
-    //console.log(urlParameters);
 
     //get values in urlParametersArray
     gameID = urlParameters[0].substring(7);
@@ -64,7 +63,6 @@ function loadMaps() {
     // populate finalMaps array with default values
     // finalMaps.push(gameData.map(x => ({mapID:x.id, action: "default" })));
     finalMaps = gameData.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
-    console.log(finalMaps);
 }
 
 // template
@@ -121,30 +119,37 @@ function countClicks(mapID) {
                 disableCell(mapID);
             }
             numberOfClicks = 0;
-        }, 500);
+        }, 400);
     }
 }
 
 function lock(mapID) {
-    // set cell styling
-    document.getElementById(mapID).classList.remove("disabled");
-    document.getElementById(mapID).classList.add("enabled");
+    let currentMapAction = getMapActionValue(mapID);
 
+    if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
+        // set cell styling
+        document.getElementById(mapID).classList.remove("disabled");
+        document.getElementById(mapID).classList.add("enabled");
 
-    // update the selected map order and push values arrays
-    mapSelectedOrder = mapSelectedOrder + 1;
-    updateMapAction(mapID, "selected", mapSelectedOrder );
+        // update the selected map order and push values arrays
+        mapSelectedOrder = mapSelectedOrder + 1;
+        updateMapAction(mapID, "selected", mapSelectedOrder );
+    }
 }
 
 
 function disableCell(mapID) {
-    // set cell styling
-    document.getElementById(mapID).classList.remove("enabled");
-    document.getElementById(mapID).classList.add("disabled");
+    let currentMapAction = getMapActionValue(mapID);
 
-    // update the selected map order and push values arrays
-    mapSelectedOrder = mapSelectedOrder + 1;
-    updateMapAction(mapID, "disabled", mapSelectedOrder);
+    if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
+        // set cell styling
+        document.getElementById(mapID).classList.remove("enabled");
+        document.getElementById(mapID).classList.add("disabled");
+
+        // update the selected map order and push values arrays
+        mapSelectedOrder = mapSelectedOrder + 1;
+        updateMapAction(mapID, "disabled", mapSelectedOrder);
+    }
 }
 
 function resetPage() {
@@ -180,7 +185,9 @@ function selectionComplete() {
     });
 
     for (i in sortedMaps) {
-        finalMapsList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": " + sortedMaps[i].action);
+        if (sortedMaps[i].action !== "default") {
+            finalMapsList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": " + sortedMaps[i].action);
+        }
     }
     document.getElementById("message-center").innerHTML = finalMapsList;
     console.log(finalMaps);
@@ -189,11 +196,24 @@ function selectionComplete() {
 
 function updateMapAction(mapID, action, mapSelectedOrder) {
     // find the mapID in the finalMap array
-    let matchedItem = finalMaps.find(x => x.mapID == mapID);
-    // find the index of the matched value
-    let matchedItemIndex = finalMaps.indexOf(matchedItem)
+    let matchedItemIndex = getMapIndex(mapID);
     // update the value
     finalMaps[matchedItemIndex].action = action;
     // update the mapOrder
     finalMaps[matchedItemIndex].selectedOrder = mapSelectedOrder;
+}
+
+function getMapActionValue(mapID) {
+    let matchedItemIndex = getMapIndex(mapID);
+    // get the current map action
+    let currentMapAction = finalMaps[matchedItemIndex].action;
+    return currentMapAction;
+}
+
+function getMapIndex(mapID) {
+    // find the mapID in the finalMap array
+    let matchedItem = finalMaps.find(x => x.mapID == mapID);
+    // find the index of the matched value
+    let matchedItemIndex = finalMaps.indexOf(matchedItem)
+    return matchedItemIndex;
 }
