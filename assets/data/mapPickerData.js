@@ -148,14 +148,32 @@ const games = [
             "selectedOrder":  ""
           },
           {
+            "id": "busan",
+            "image": "./assets/images/map_picker/overwatch/busan.jpg",
+            "action": "default",
+            "selectedOrder":  ""
+          },
+          {
             "id": "rialto",
             "image": "./assets/images/map_picker/overwatch/rialto.jpg",
             "action": "default",
             "selectedOrder":  ""
           },
           {
-            "id": "busan",
-            "image": "./assets/images/map_picker/overwatch/busan.jpg",
+            "id": "ilios",
+            "image": "./assets/images/map_picker/overwatch/ilios.jpg",
+            "action": "default",
+            "selectedOrder":  ""
+          },
+          {
+            "id": "route66",
+            "image": "./assets/images/map_picker/overwatch/route66.jpg",
+            "action": "default",
+            "selectedOrder":  ""
+          },
+          {
+            "id": "paris",
+            "image": "./assets/images/map_picker/overwatch/paris.jpg",
             "action": "default",
             "selectedOrder":  ""
           }
