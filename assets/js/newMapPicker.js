@@ -58,18 +58,61 @@ function loadMaps() {
 
     // populate the list of maps
     let mapsList = document.getElementById("maps_container");
-    mapsList.innerHTML = `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
+    if (games.id == 0) {
+        mapsList.innerHTML = `${gameData.map(csgoMapSelectionTemplate).join("")}` + buttonTemplate;
+    } else {
+        mapsList.innerHTML = `${gameData.map(overwatchMapSelectionTemplate).join("")}` + buttonTemplate;
+    }
 
     // populate finalMaps array with default values
     // finalMaps.push(gameData.map(x => ({mapID:x.id, action: "default" })));
     finalMaps = gameData.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
 }
 
-// template
-function mapSelectionTemplate(map) {
+// CSGO template
+function csgoMapSelectionTemplate(map) {
     return `
         <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
             <p>${map.id}</p>
+        </div>
+    `;
+}
+// Overwatch template
+function overwatchMapSelectionTemplate(map) {
+    return `
+        <div>
+            <div >
+                <div class="map_column" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
+                    <p>CONTROL</p>
+                </div>
+                <div onClick="countClicks('${map.typeControl.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+                    <p>${map.id}</p>
+                </div>
+            </div>
+            <div>
+                <div class="map_column" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
+                    <p>ASSAULT</p>
+                </div>
+                <div onClick="countClicks('${map.typeAssault.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+                    <p>${map.id}</p>
+                </div>
+            </div>
+            <div>
+                <div class="map_column" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
+                    <p>HYBRID</p>
+                </div>
+                <div onClick="countClicks('${map.typeHybrid.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+                    <p>${map.id}</p>
+                </div>
+            </div>
+            <div>
+                <div class="map_column" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
+                    <p>ESCORT</p>
+                </div>
+                <div onClick="countClicks('${map.typeEscort.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+                    <p>${map.id}</p>
+                </div>
+            </div>
         </div>
     `;
 }
@@ -217,3 +260,8 @@ function getMapIndex(mapID) {
     let matchedItemIndex = finalMaps.indexOf(matchedItem)
     return matchedItemIndex;
 }
+
+
+
+var column_template = `
+`;
