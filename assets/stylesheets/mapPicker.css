@@ -89,6 +89,7 @@ img {
 
 #maps_container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   height: 100%;
   box-sizing: content-box;
@@ -98,14 +99,14 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   background-repeat: no-repeat !important;
   background-position: center !important;
   background-size: cover !important;
   flex-basis: 25%;
   position: relative;
   height: auto;
-  width: 100%;
+  width: 25%;
   text-transform: uppercase;
   user-select: none;
 }
@@ -157,6 +158,18 @@ img {
   position: relative;
   height: auto;
   width: 100%;
+  outline: none; /*sometime javascript clicks cause weird outline*/
+}
+
+.headers-section {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-basis: 25%;
+  position: relative;
+  height: auto;
+  min-width: 100%;
   outline: none; /*sometime javascript clicks cause weird outline*/
 }
 

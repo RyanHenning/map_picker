@@ -67,48 +67,12 @@ const games = [
             }
           },
           {
-            "id": "busan",
-            "image": "./assets/images/map_picker/overwatch/busan.jpg",
-            "action": "default",
-            "selectedOrder":  "",
-            "typeControl": {
-              "id": "busan"
-            }
-          },
-          {
-            "id": "lijiang",
-            "image": "./assets/images/map_picker/overwatch/lijiang.jpg",
-            "action": "default",
-            "selectedOrder":  "",
-            "typeControl": {
-              "id": "lijiang"
-            }
-          },
-          {
             "id": "hanamura",
             "image": "./assets/images/map_picker/overwatch/hanamura.jpg",
             "action": "default",
             "selectedOrder":  "",
             "typeAssault": {
               "id": "hanamura"
-            }
-          },
-          {
-            "id": "volskaya",
-            "image": "./assets/images/map_picker/overwatch/volskaya.jpg",
-            "action": "default",
-            "selectedOrder":  "",
-            "typeAssault": {
-              "id": "volskaya"
-            }
-          },
-          {
-            "id": "anubis",
-            "image": "./assets/images/map_picker/overwatch/anubis.jpg",
-            "action": "default",
-            "selectedOrder": "",
-            "typeAssault": {
-              "id": "anubis"
             }
           },
           {
@@ -121,24 +85,6 @@ const games = [
             }
           },
           {
-            "id": "blizzardworld",
-            "image": "./assets/images/map_picker/overwatch/blizzardworld.jpg",
-            "action": "default",
-            "selectedOrder":  "",
-            "typeHybrid": {
-              "id": "blizzardworld"
-            }
-          },
-          {
-            "id": "kingsRow",
-            "image": "./assets/images/map_picker/overwatch/kingsRow.jpg",
-            "action": "default",
-            "selectedOrder":  "",
-            "typeHybrid": {
-              "id": "kingsRow"
-            }
-          },
-          {
             "id": "havana",
             "image": "./assets/images/map_picker/overwatch/havana.jpg",
             "action": "default",
@@ -148,12 +94,66 @@ const games = [
             }
           },
           {
+            "id": "busan",
+            "image": "./assets/images/map_picker/overwatch/busan.jpg",
+            "action": "default",
+            "selectedOrder":  "",
+            "typeControl": {
+              "id": "busan"
+            }
+          },
+          {
+            "id": "volskaya",
+            "image": "./assets/images/map_picker/overwatch/volskaya.jpg",
+            "action": "default",
+            "selectedOrder":  "",
+            "typeAssault": {
+              "id": "volskaya"
+            }
+          },
+          {
+            "id": "blizzardworld",
+            "image": "./assets/images/map_picker/overwatch/blizzardworld.jpg",
+            "action": "default",
+            "selectedOrder":  "",
+            "typeHybrid": {
+              "id": "blizzardworld"
+            }
+          },
+          {
             "id": "junkertown",
             "image": "./assets/images/map_picker/overwatch/junkertown.jpg",
             "action": "default",
             "selectedOrder":  "",
             "typeEscort": {
               "id": "junkertown"
+            }
+          },
+          {
+            "id": "lijiang",
+            "image": "./assets/images/map_picker/overwatch/lijiang.jpg",
+            "action": "default",
+            "selectedOrder":  "",
+            "typeControl": {
+              "id": "lijiang"
+            }
+          },
+          {
+            "id": "anubis",
+            "image": "./assets/images/map_picker/overwatch/anubis.jpg",
+            "action": "default",
+            "selectedOrder": "",
+            "typeAssault": {
+              "id": "anubis"
+            }
+          },
+          {
+            "id": "kingsRow",
+            "image": "./assets/images/map_picker/overwatch/kingsRow.jpg",
+            "action": "default",
+            "selectedOrder":  "",
+            "typeHybrid": {
+              "id": "kingsRow"
             }
           },
           {
