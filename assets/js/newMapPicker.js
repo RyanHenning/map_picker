@@ -58,58 +58,55 @@ function loadMaps() {
 
     // populate the list of maps
     let mapsList = document.getElementById("maps_container");
+   // mapsList.innerHTML = headersTemplate + `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
+
     if (gameName === "CSGO") {
-        mapsList.innerHTML = `${gameData.map(csgoMapSelectionTemplate).join("")}` + buttonTemplate;
+        mapsList.innerHTML = `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
     } else {
-        mapsList.innerHTML = headersTemplate + `${gameData.map(overwatchMapSelectionTemplate).join("")}` + buttonTemplate;
+         mapsList.innerHTML = headersTemplate + `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
     }
 
-    // populate finalMaps array with default values
-    // finalMaps.push(gameData.map(x => ({mapID:x.id, action: "default" })));
     finalMaps = gameData.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
 }
 
-// CSGO template
-function csgoMapSelectionTemplate(map) {
-    return `
-        <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-            <p>${map.id}</p>
-        </div>
-    `;
-}
-// Overwatch template
-function overwatchMapSelectionTemplate(map) {
+
+// logic to generate template based on column headers
+function mapSelectionTemplate(map) {
     console.log(map);
-    return `
+
+    switch(map.columnID) {
+        case 1:
+            return `
                 <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
                     <p>${map.id}</p>
-                </div>
-        `;
-    //     <div class="map_column" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
-    //         <div class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
-    //             <p>ASSAULT</p>
-    //         </div>
-    //         <div onClick="countClicks('${map.typeAssault.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-    //             <p>${map.id}</p>
-    //         </div>
-    //     </div>
-    //     <div class="map_column" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
-    //         <div class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
-    //             <p>HYBRID</p>
-    //         </div>
-    //         <div onClick="countClicks('${map.typeHybrid.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-    //             <p>${map.id}</p>
-    //         </div>
-    //     </div>
-    //     <div class="map_column" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
-    //         <div class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3))">
-    //             <p>ESCORT</p>
-    //         </div>
-    //         <div onClick="countClicks('${map.typeEscort.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-    //             <p>${map.id}</p>
-    //         </div>
-    //     </div>
-    // `;
+                </div>`
+            break;
+        case 2:
+            return `
+                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+                    <p>${map.id}</p>
+                </div>`
+            break;
+        case 3:
+            return `
+                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+                    <p>${map.id}</p>
+                </div>`
+            break;
+        case 4:
+            return `
+                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+                    <p>${map.id}</p>
+                </div>`
+            break;
+        default:
+            //CS GO Default
+            return `
+                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+                    <p>${map.id}</p>
+                </div>`
+            break;
+      }
 }
 
 // button template

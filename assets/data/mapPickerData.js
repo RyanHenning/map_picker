@@ -62,109 +62,92 @@ const games = [
             "image": "./assets/images/map_picker/overwatch/ilios.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeControl": {
-              "id": "ilios"
-            }
+            "columnID": 1,
+            "columnName": "CONTROL"
           },
           {
             "id": "hanamura",
             "image": "./assets/images/map_picker/overwatch/hanamura.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeAssault": {
-              "id": "hanamura"
-            }
+            "columnID":2
           },
           {
             "id": "hollywood",
             "image": "./assets/images/map_picker/overwatch/hollywood.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeHybrid": {
-              "id": "hollywood"
-            }
+            "columnID": 3
           },
           {
             "id": "havana",
             "image": "./assets/images/map_picker/overwatch/havana.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeEscort": {
-              "id": "havana"
-            }
+            "columnID": 4
           },
           {
             "id": "busan",
             "image": "./assets/images/map_picker/overwatch/busan.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeControl": {
-              "id": "busan"
-            }
+            "columnID": 1
           },
           {
             "id": "volskaya",
             "image": "./assets/images/map_picker/overwatch/volskaya.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeAssault": {
-              "id": "volskaya"
-            }
+            "columnID":2
           },
           {
             "id": "blizzardworld",
             "image": "./assets/images/map_picker/overwatch/blizzardworld.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeHybrid": {
-              "id": "blizzardworld"
-            }
+            "columnID": 3
           },
           {
             "id": "junkertown",
             "image": "./assets/images/map_picker/overwatch/junkertown.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeEscort": {
-              "id": "junkertown"
-            }
+            "columnID": 4
           },
           {
             "id": "lijiang",
             "image": "./assets/images/map_picker/overwatch/lijiang.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeControl": {
-              "id": "lijiang"
-            }
+            "columnID": 1
           },
           {
             "id": "anubis",
             "image": "./assets/images/map_picker/overwatch/anubis.jpg",
             "action": "default",
             "selectedOrder": "",
-            "typeAssault": {
-              "id": "anubis"
-            }
+            "columnID":2
           },
           {
             "id": "kingsRow",
             "image": "./assets/images/map_picker/overwatch/kingsRow.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeHybrid": {
-              "id": "kingsRow"
-            }
+            "columnID": 3
           },
           {
             "id": "route66",
             "image": "./assets/images/map_picker/overwatch/route66.jpg",
             "action": "default",
             "selectedOrder":  "",
-            "typeEscort": {
-              "id": "route66"
-            }
+            "columnID": 4
           }
+        ],
+        "columns": [
+          { "id": 1, "name": "CONTROL" },
+          {"id" : 2, "name": "ASSAULT"},
+          {"id" : 3, "name": "HYBRID"},
+          {"id" : 4, "name": "ESCORT"},
         ]
       }
 
