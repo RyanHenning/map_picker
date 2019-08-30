@@ -137,17 +137,17 @@ var buttonTemplate = `
 
 // headers template
 var headersTemplate = `
-    <div class="headers-section" style="background: url('/assets/images/map_picker/overwatch/logo_white.png')">
-        <div class=maps_selector">
+    <div class="headers-section" style="background: color(green) url('/assets/images/map_picker/overwatch/hollywood.jpg')">
+        <div class=map_column">
             <p>CONTROL</p>
         </div>
-        <div class=maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/map_picker/overwatch/logo_black.png')">
+        <div class=map_column" style="background: color(green) url('/assets/images/map_picker/overwatch/hollywood.jpg')">
             <p>ASSAULT</p>
         </div>
-        <div class=maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/map_picker/overwatch/logo_black.png')">
+        <div class=map_column" width="100%" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/map_picker/overwatch/logo_black.png')">
             <p>HYBRID</p>
         </div>
-        <div class=maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/map_picker/overwatch/logo_black.png')">
+        <div class=map_column">
             <p>ESCORT</p>
         </div>
     </div>
