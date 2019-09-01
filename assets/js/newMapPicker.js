@@ -189,7 +189,6 @@ function lock(mapID) {
     }
 }
 
-
 function disableCell(mapID) {
     let currentMapAction = getMapActionValue(mapID);
 
@@ -204,6 +203,7 @@ function disableCell(mapID) {
     }
 }
 
+//undo the previous action
 function resetPage() {
     if (mapSelectedOrder > 0) {
         // find the map based on the numberOfClicks
@@ -227,6 +227,8 @@ function resetPage() {
     }
 }
 
+
+// when user clicks checkmark for complete call this function and print out the final map list
 function selectionComplete() {
     // reset message
     document.getElementById("message-center").innerHTML = "";
@@ -245,7 +247,8 @@ function selectionComplete() {
     console.log(finalMaps);
 }
 
-
+// after the user performs action (select or ban) then we want to grab the map ID and action and push to the final map array.
+//this array will be printed out when the user hits the checkmark
 function updateMapAction(mapID, action, mapSelectedOrder) {
     // find the mapID in the finalMap array
     let matchedItemIndex = getMapIndex(mapID);
@@ -254,6 +257,7 @@ function updateMapAction(mapID, action, mapSelectedOrder) {
     // update the mapOrder
     finalMaps[matchedItemIndex].selectedOrder = mapSelectedOrder;
 }
+
 
 function getMapActionValue(mapID) {
     let matchedItemIndex = getMapIndex(mapID);
