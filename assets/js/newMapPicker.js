@@ -90,8 +90,10 @@ function mapSelectionTemplate(map) {
 /////////////////////////////////////////////////////////////////////////////////////
 function mapColumnHeaders(column) {
    // console.log(gameData.gameMapList);
+    // we need to create a sub-array of games that match this column ID
     let gamesByColumn = gameData.gameMapList.filter(x=> x.columnID == column.id )
 
+    //we then use that sub array to populate our games with our column div
     return `
         <div class="map_column" id="map_column_${column.id}">
             <div class="map_heading">${column.name}</div>
