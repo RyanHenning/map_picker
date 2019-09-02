@@ -117,6 +117,11 @@ img {
   padding-bottom: 7%;
 }
 
+.map_heading small {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: .5em;
+}
+
 .maps_selector, .enabled, .disabled {
   display: flex;
   align-items: center;

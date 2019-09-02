@@ -96,7 +96,10 @@ function mapColumnHeaders(column) {
     //we then use that sub array to populate our games with our column div
     return `
         <div class="map_column" id="map_column_${column.id}">
-            <div class="map_heading">${column.name}</div>
+            <div class="map_heading">
+                ${column.name}<br/>
+                <small>BAN: ${column.maxBan} &nbsp; SELECT: ${column.maxSelection}</small>
+            </div>
             ${gamesByColumn.map(mapSelectionTemplate).join("")}
 
         </div>`
@@ -156,30 +159,82 @@ function countClicks(mapID) {
 function lock(mapID) {
     let currentMapAction = getMapActionValue(mapID);
 
-    if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
-        // set cell styling
-        document.getElementById(mapID).classList.remove("disabled");
-        document.getElementById(mapID).classList.add("enabled");
+    // we need to check to see if there is a columns array for the game data
+    if (gameData.columns == null) {
+        if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
+            // set cell styling
+            document.getElementById(mapID).classList.remove("disabled");
+            document.getElementById(mapID).classList.add("enabled");
 
-        // update the selected map order and push values arrays
-        mapSelectedOrder = mapSelectedOrder + 1;
-        updateMapAction(mapID, "selected", mapSelectedOrder );
+            // update the selected map order and push values arrays
+            mapSelectedOrder = mapSelectedOrder + 1;
+            updateMapAction(mapID, "selected", mapSelectedOrder );
+        }
+    // if the columns array exists we need to process select/bans differently
+    } else if (gameData.columns != null) {
+        //find the parent column number
+        var columnFullID = document.getElementById(mapID).parentElement.id
+        //get just the number of the columnID
+        columnID = columnFullID.slice(-1)
+
+        //get the select data form the columns game data
+        var maxSelect = gameData.columns[columnID - 1].maxSelection;
+
+        //get the number of select CSS classes on the current column.
+        var numberOfSelects = document.getElementById(columnFullID).getElementsByClassName("enabled").length;
+
+        if (currentMapAction !== "selected" && currentMapAction !== "disabled" && numberOfSelects < maxSelect) {
+            // set cell styling
+            document.getElementById(mapID).classList.remove("disabled");
+            document.getElementById(mapID).classList.add("enabled");
+
+            // update the selected map order and push values arrays
+            mapSelectedOrder = mapSelectedOrder + 1;
+            updateMapAction(mapID, "selected", mapSelectedOrder );
+        }
+
     }
 }
 
 function disableCell(mapID) {
     let currentMapAction = getMapActionValue(mapID);
 
-    if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
-        // set cell styling
-        document.getElementById(mapID).classList.remove("enabled");
-        document.getElementById(mapID).classList.add("disabled");
+    // we need to check to see if there is a columns array for the game data
+    if (gameData.columns == null) {
+        if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
+            // set cell styling
+            document.getElementById(mapID).classList.remove("enabled");
+            document.getElementById(mapID).classList.add("disabled");
 
-        // update the selected map order and push values arrays
-        mapSelectedOrder = mapSelectedOrder + 1;
-        updateMapAction(mapID, "disabled", mapSelectedOrder);
+            // update the selected map order and push values arrays
+            mapSelectedOrder = mapSelectedOrder + 1;
+            updateMapAction(mapID, "disabled", mapSelectedOrder);
+        }
+        // if the columns array exists we need to process select/bans differently
+    } else if (gameData.columns != null) {
+        //find the parent column number
+        var columnFullID = document.getElementById(mapID).parentElement.id
+        //get just the number of the columnID
+        columnID = columnFullID.slice(-1)
+
+        //get the ban/select data form the columns game data
+        var maxBan = gameData.columns[columnID - 1].maxBan;
+
+        //get the number of ban CSS classes on the current column.
+        var numberOfBans = document.getElementById(columnFullID).getElementsByClassName("disabled").length;
+
+         if (currentMapAction !== "selected" && currentMapAction !== "disabled" && numberOfBans < maxBan) {
+            // set cell styling
+            document.getElementById(mapID).classList.remove("enabled");
+            document.getElementById(mapID).classList.add("disabled");
+
+            // update the selected map order and push values arrays
+            mapSelectedOrder = mapSelectedOrder + 1;
+            updateMapAction(mapID, "disabled", mapSelectedOrder);
+        }
     }
 }
+
 
 //undo the previous action
 function resetPage() {
