@@ -5,7 +5,7 @@ const games = [
         "background_image": "./assets/images/map_picker/csgo/logo_background.jpg",
         "logo": "./assets/images/map_picker/csgo/logo_white.png",
         "url": "./mapPicker-gameSelector.html?gameID=0&rounds=3",
-        "maps": [
+        "gameMapList": [
           {
             "id": "dust_II",
             "image": "./assets/images/map_picker/csgo/Dust_II.jpg",
@@ -58,7 +58,7 @@ const games = [
     "background_image": "./assets/images/map_picker/overwatch/logo_background.jpg",
     "logo": "./assets/images/map_picker/overwatch/logo_white.png",
     "url": "./mapPicker-gameSelector.html?gameID=1&rounds=3",
-    "maps": [
+    "gameMapList": [
       {
         "id": "ilios",
         "image": "./assets/images/map_picker/overwatch/ilios.jpg",

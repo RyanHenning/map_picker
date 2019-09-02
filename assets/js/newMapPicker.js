@@ -38,6 +38,8 @@ function gameSelectionTempalate(game) {
 let numberOfRounds = 0;
 let numberOfMaps = 0;
 let gameID = 0;
+let gameData;
+let mapList;
 
 // initialize game maps
 function loadMaps() {
@@ -50,64 +52,54 @@ function loadMaps() {
     numberOfRounds = urlParameters[1].substring(7);
 
     // grab data from mapPickerData JSON via ID
-    let gameData = games[gameID].maps;
+    gameData = games[gameID];
+    mapList = games[gameID].gameMapList;
     let gameName = games[gameID].name;
 
     console.log("Number of Rounds: " + numberOfRounds + " for " + gameName);
-    console.log("Map Pool Size: " + games[gameID].maps.length);
+    console.log("Map Pool Size: " + games[gameID].gameMapList.length);
 
     // populate the list of maps
     let mapsList = document.getElementById("maps_container");
-   // mapsList.innerHTML = headersTemplate + `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
 
-    if (gameName === "CSGO") {
-        mapsList.innerHTML = `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
+    // if a gameData does not contain columns than we can just return the games via default flexbox layout
+    if (gameData.columns == null) {
+         mapsList.innerHTML = `${mapList.map(mapSelectionTemplate).join("")}` + buttonTemplate;
     } else {
-         mapsList.innerHTML = headersTemplate + `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
+        // if a gameData does contain columns. We need to put the games in the correct columns with the correct headers
+        mapsList.innerHTML = `<div class="headers-section">${gameData.columns.map(mapColumnHeaders).join("")}</div>` + buttonTemplate;
     }
 
-    finalMaps = gameData.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
+    //initialize the finalMaps array with the game data
+    finalMaps = gameData.gameMapList.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
 }
 
-
-// logic to generate template based on column headers
+/////////////////////////////////////////////////////////
+// default game layout function when there are no columns
+//////////////////////////////////////////////////////////
 function mapSelectionTemplate(map) {
-    console.log(map);
-
-    switch(map.columnID) {
-        case 1:
-            return `
-                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-                    <p>${map.id}</p>
-                </div>`
-            break;
-        case 2:
-            return `
-                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-                    <p>${map.id}</p>
-                </div>`
-            break;
-        case 3:
-            return `
-                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-                    <p>${map.id}</p>
-                </div>`
-            break;
-        case 4:
-            return `
-                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-                    <p>${map.id}</p>
-                </div>`
-            break;
-        default:
-            //CS GO Default
-            return `
-                <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
-                    <p>${map.id}</p>
-                </div>`
-            break;
-      }
+    //console.log(map)
+    return `
+        <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
+            <p>${map.id}</p>
+        </div>`
 }
+
+/////////////////////////////////////////////////////////////////////////////////////
+//column game layout function when there are columns for the games to be sorted into
+/////////////////////////////////////////////////////////////////////////////////////
+function mapColumnHeaders(column) {
+   // console.log(gameData.gameMapList);
+    let gamesByColumn = gameData.gameMapList.filter(x=> x.columnID == column.id )
+
+    return `
+        <div class="map_column" id="map_column_${column.id}">
+            <div class="map_heading">${column.name}</div>
+            ${gamesByColumn.map(mapSelectionTemplate).join("")}
+
+        </div>`
+}
+
 
 // button template
 var buttonTemplate = `
@@ -132,23 +124,7 @@ var buttonTemplate = `
     </div>
 `;
 
-// headers template
-var headersTemplate = `
-    <div class="headers-section" style="background: color(green) url('/assets/images/map_picker/overwatch/hollywood.jpg')">
-        <div class=map_column">
-            <p>CONTROL</p>
-        </div>
-        <div class=map_column" style="background: color(green) url('/assets/images/map_picker/overwatch/hollywood.jpg')">
-            <p>ASSAULT</p>
-        </div>
-        <div class=map_column" width="100%" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('/assets/images/map_picker/overwatch/logo_black.png')">
-            <p>HYBRID</p>
-        </div>
-        <div class=map_column">
-            <p>ESCORT</p>
-        </div>
-    </div>
-`;
+
 /////////////////////////////////
 // Game Map Selection Functions
 ////////////////////////////////

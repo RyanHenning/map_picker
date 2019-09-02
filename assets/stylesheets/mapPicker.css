@@ -105,10 +105,16 @@ img {
   background-size: cover !important;
   flex-basis: 25%;
   position: relative;
-  height: auto;
+  height: 100%;
   width: 100%;
   text-transform: uppercase;
   user-select: none;
+  text-align: center;
+}
+
+.map_heading{
+  padding-top: 7%;
+  padding-bottom: 7%;
 }
 
 .maps_selector, .enabled, .disabled {

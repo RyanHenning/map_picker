@@ -50,11 +50,11 @@ function loadMaps() {
     numberOfRounds = urlParameters[1].substring(7);
 
     // grab data from mapPickerData JSON via ID
-    let gameData = games[gameID].maps;
+    let gameData = games[gameID].gameMapList;
     let gameName = games[gameID].name;
 
     console.log("Number of Rounds: " + numberOfRounds + " for " + gameName);
-    console.log("Map Pool Size: " + games[gameID].maps.length);
+    console.log("Map Pool Size: " + games[gameID].gameMapList.length);
 
     // populate the list of maps
     let mapsList = document.getElementById("maps_container");
