@@ -5,7 +5,7 @@ const games = [
         "background_image": "./assets/images/map_picker/csgo/logo_background.jpg",
         "logo": "./assets/images/map_picker/csgo/logo_white.png",
         "url": "./mapPicker-gameSelector.html?gameID=0&rounds=3",
-        "maps": [
+        "gameMapList": [
           {
             "id": "dust_II",
             "image": "./assets/images/map_picker/csgo/Dust_II.jpg",
@@ -48,136 +48,108 @@ const games = [
             "action": "default",
             "selectedOrder":  ""
           }
-        ]
+        ],
+        "columns": null
+      },
+
+  {
+    "id": 1,
+    "name": "Overwatch",
+    "background_image": "./assets/images/map_picker/overwatch/logo_background.jpg",
+    "logo": "./assets/images/map_picker/overwatch/logo_white.png",
+    "url": "./mapPicker-gameSelector.html?gameID=1&rounds=3",
+    "gameMapList": [
+      {
+        "id": "ilios",
+        "image": "./assets/images/map_picker/overwatch/ilios.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 1,
       },
       {
-        "id": 1,
-        "name": "Overwatch",
-        "background_image": "./assets/images/map_picker/overwatch/logo_background.jpg",
-        "logo": "./assets/images/map_picker/overwatch/logo_white.png",
-        "url": "./mapPicker-gameSelector.html?gameID=1&rounds=3",
-        "maps": [
-          {
-            "id": "anubis",
-            "image": "./assets/images/map_picker/overwatch/anubis.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "dorado",
-            "image": "./assets/images/map_picker/overwatch/dorado.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "eichenwalde",
-            "image": "./assets/images/map_picker/overwatch/eichenwalde.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "gibraltar",
-            "image": "./assets/images/map_picker/overwatch/gibraltar.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "hanamura",
-            "image": "./assets/images/map_picker/overwatch/hanamura.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "hollywood",
-            "image": "./assets/images/map_picker/overwatch/hollywood.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "kingsRow",
-            "image": "./assets/images/map_picker/overwatch/kingsRow.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "lijiang",
-            "image": "./assets/images/map_picker/overwatch/lijiang.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "nepal",
-            "image": "./assets/images/map_picker/overwatch/nepal.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "oasis",
-            "image": "./assets/images/map_picker/overwatch/oasis.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "numbani",
-            "image": "./assets/images/map_picker/overwatch/numbani.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "volskaya",
-            "image": "./assets/images/map_picker/overwatch/volskaya.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "junkertown",
-            "image": "./assets/images/map_picker/overwatch/junkertown.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "horizon",
-            "image": "./assets/images/map_picker/overwatch/horizon.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "blizzardworld",
-            "image": "./assets/images/map_picker/overwatch/blizzardworld.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "busan",
-            "image": "./assets/images/map_picker/overwatch/busan.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "rialto",
-            "image": "./assets/images/map_picker/overwatch/rialto.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "ilios",
-            "image": "./assets/images/map_picker/overwatch/ilios.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "route66",
-            "image": "./assets/images/map_picker/overwatch/route66.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          },
-          {
-            "id": "paris",
-            "image": "./assets/images/map_picker/overwatch/paris.jpg",
-            "action": "default",
-            "selectedOrder":  ""
-          }
+        "id": "hanamura",
+        "image": "./assets/images/map_picker/overwatch/hanamura.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 2
+      },
+      {
+        "id": "hollywood",
+        "image": "./assets/images/map_picker/overwatch/hollywood.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 3
+      },
+      {
+        "id": "havana",
+        "image": "./assets/images/map_picker/overwatch/havana.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 4
+      },
+      {
+        "id": "busan",
+        "image": "./assets/images/map_picker/overwatch/busan.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 1
+      },
+      {
+        "id": "volskaya",
+        "image": "./assets/images/map_picker/overwatch/volskaya.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 2
+      },
+      {
+        "id": "blizzardworld",
+        "image": "./assets/images/map_picker/overwatch/blizzardworld.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 3
+      },
+      {
+        "id": "junkertown",
+        "image": "./assets/images/map_picker/overwatch/junkertown.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 4
+      },
+      {
+        "id": "lijiang",
+        "image": "./assets/images/map_picker/overwatch/lijiang.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 1
+      },
+      {
+        "id": "anubis",
+        "image": "./assets/images/map_picker/overwatch/anubis.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 2
+      },
+      {
+        "id": "kingsRow",
+        "image": "./assets/images/map_picker/overwatch/kingsRow.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 3
+      },
+      {
+        "id": "route66",
+        "image": "./assets/images/map_picker/overwatch/route66.jpg",
+        "action": "default",
+        "selectedOrder": "",
+        "columnID": 4
+      }
+    ],
+    "columns": [
+      { "id": 1, "name": "CONTROL", "maxSelection": 2, "maxBan": 1},
+      { "id": 2, "name": "ASSAULT", "maxSelection": 1, "maxBan": 2},
+      { "id": 3, "name": "HYBRID", "maxSelection": 1, "maxBan": 2},
+      { "id": 4, "name": "ESCORT", "maxSelection": 1, "maxBan" : 2},
         ]
       }
 
-]
+];

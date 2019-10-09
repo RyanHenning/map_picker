@@ -1,7 +1,7 @@
 /////////////////////////////////////////////////
 // Global Variables - used in multiple sections
 /////////////////////////////////////////////////
-let finalMaps = []
+let finalMaps = [];
 let mapSelectedOrder = 0;
 
 /////////////////////////////////
@@ -38,6 +38,8 @@ function gameSelectionTempalate(game) {
 let numberOfRounds = 0;
 let numberOfMaps = 0;
 let gameID = 0;
+let gameData;
+let mapList;
 
 // initialize game maps
 function loadMaps() {
@@ -50,7 +52,8 @@ function loadMaps() {
     numberOfRounds = urlParameters[1].substring(7);
 
     // grab data from mapPickerData JSON via ID
-    let gameData = games[gameID].gameMapList;
+    gameData = games[gameID];
+    mapList = games[gameID].gameMapList;
     let gameName = games[gameID].name;
 
     console.log("Number of Rounds: " + numberOfRounds + " for " + gameName);
@@ -58,23 +61,52 @@ function loadMaps() {
 
     // populate the list of maps
     let mapsList = document.getElementById("maps_container");
-    mapsList.innerHTML = `${gameData.map(mapSelectionTemplate).join("")}` + buttonTemplate;
 
-    // populate finalMaps array with default values
-    // finalMaps.push(gameData.map(x => ({mapID:x.id, action: "default" })));
-    finalMaps = gameData.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
+    // if a gameData does not contain columns than we can just return the games via default flexbox layout
+    if (gameData.columns == null) {
+         mapsList.innerHTML = `${mapList.map(mapSelectionTemplate).join("")}` + buttonTemplate;
+    } else {
+        // if a gameData does contain columns. We need to put the games in the correct columns with the correct headers
+        mapsList.innerHTML = `<div class="headers-section">${gameData.columns.map(mapColumnHeaders).join("")}</div>` + buttonTemplate;
+    }
+
+    //initialize the finalMaps array with the game data
+    finalMaps = gameData.gameMapList.map(x => ({mapID:x.id, action: "default", selectedOrder: 0 }));
 }
 
-// template
+/////////////////////////////////////////////////////////
+// default game layout function when there are no columns
+//////////////////////////////////////////////////////////
 function mapSelectionTemplate(map) {
+    //console.log(map)
     return `
         <div onClick="countClicks('${map.id}')" id="${map.id}" class="maps_selector" style="background:linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${map.image})">
             <p>${map.id}</p>
-        </div>
-    `;
+        </div>`
 }
 
-// template
+/////////////////////////////////////////////////////////////////////////////////////
+//column game layout function when there are columns for the games to be sorted into
+/////////////////////////////////////////////////////////////////////////////////////
+function mapColumnHeaders(column) {
+   // console.log(gameData.gameMapList);
+    // we need to create a sub-array of games that match this column ID
+    let gamesByColumn = gameData.gameMapList.filter(x=> x.columnID == column.id )
+
+    //we then use that sub array to populate our games with our column div
+    return `
+        <div class="map_column" id="map_column_${column.id}">
+            <div class="map_heading">
+                ${column.name}<br/>
+                <small>BAN: ${column.maxBan} &nbsp; SELECT: ${column.maxSelection}</small>
+            </div>
+            ${gamesByColumn.map(mapSelectionTemplate).join("")}
+
+        </div>`
+}
+
+
+// button template
 var buttonTemplate = `
 <div class="maps_selector" >
     <div class="control_section" >
@@ -96,6 +128,7 @@ var buttonTemplate = `
         </div>
     </div>
 `;
+
 
 /////////////////////////////////
 // Game Map Selection Functions
@@ -126,32 +159,84 @@ function countClicks(mapID) {
 function lock(mapID) {
     let currentMapAction = getMapActionValue(mapID);
 
-    if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
-        // set cell styling
-        document.getElementById(mapID).classList.remove("disabled");
-        document.getElementById(mapID).classList.add("enabled");
+    // we need to check to see if there is a columns array for the game data
+    if (gameData.columns == null) {
+        if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
+            // set cell styling
+            document.getElementById(mapID).classList.remove("disabled");
+            document.getElementById(mapID).classList.add("enabled");
 
-        // update the selected map order and push values arrays
-        mapSelectedOrder = mapSelectedOrder + 1;
-        updateMapAction(mapID, "selected", mapSelectedOrder );
+            // update the selected map order and push values arrays
+            mapSelectedOrder = mapSelectedOrder + 1;
+            updateMapAction(mapID, "selected", mapSelectedOrder );
+        }
+    // if the columns array exists we need to process select/bans differently
+    } else if (gameData.columns != null) {
+        //find the parent column number
+        var columnFullID = document.getElementById(mapID).parentElement.id
+        //get just the number of the columnID
+        columnID = columnFullID.slice(-1)
+
+        //get the select data form the columns game data
+        var maxSelect = gameData.columns[columnID - 1].maxSelection;
+
+        //get the number of select CSS classes on the current column.
+        var numberOfSelects = document.getElementById(columnFullID).getElementsByClassName("enabled").length;
+
+        if (currentMapAction !== "selected" && currentMapAction !== "disabled" && numberOfSelects < maxSelect) {
+            // set cell styling
+            document.getElementById(mapID).classList.remove("disabled");
+            document.getElementById(mapID).classList.add("enabled");
+
+            // update the selected map order and push values arrays
+            mapSelectedOrder = mapSelectedOrder + 1;
+            updateMapAction(mapID, "selected", mapSelectedOrder );
+        }
+
     }
 }
-
 
 function disableCell(mapID) {
     let currentMapAction = getMapActionValue(mapID);
 
-    if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
-        // set cell styling
-        document.getElementById(mapID).classList.remove("enabled");
-        document.getElementById(mapID).classList.add("disabled");
+    // we need to check to see if there is a columns array for the game data
+    if (gameData.columns == null) {
+        if (currentMapAction !== "selected" && currentMapAction !== "disabled") {
+            // set cell styling
+            document.getElementById(mapID).classList.remove("enabled");
+            document.getElementById(mapID).classList.add("disabled");
 
-        // update the selected map order and push values arrays
-        mapSelectedOrder = mapSelectedOrder + 1;
-        updateMapAction(mapID, "disabled", mapSelectedOrder);
+            // update the selected map order and push values arrays
+            mapSelectedOrder = mapSelectedOrder + 1;
+            updateMapAction(mapID, "disabled", mapSelectedOrder);
+        }
+        // if the columns array exists we need to process select/bans differently
+    } else if (gameData.columns != null) {
+        //find the parent column number
+        var columnFullID = document.getElementById(mapID).parentElement.id
+        //get just the number of the columnID
+        columnID = columnFullID.slice(-1)
+
+        //get the ban/select data form the columns game data
+        var maxBan = gameData.columns[columnID - 1].maxBan;
+
+        //get the number of ban CSS classes on the current column.
+        var numberOfBans = document.getElementById(columnFullID).getElementsByClassName("disabled").length;
+
+         if (currentMapAction !== "selected" && currentMapAction !== "disabled" && numberOfBans < maxBan) {
+            // set cell styling
+            document.getElementById(mapID).classList.remove("enabled");
+            document.getElementById(mapID).classList.add("disabled");
+
+            // update the selected map order and push values arrays
+            mapSelectedOrder = mapSelectedOrder + 1;
+            updateMapAction(mapID, "disabled", mapSelectedOrder);
+        }
     }
 }
 
+
+//undo the previous action
 function resetPage() {
     if (mapSelectedOrder > 0) {
         // find the map based on the numberOfClicks
@@ -175,11 +260,13 @@ function resetPage() {
     }
 }
 
+
+// when user clicks checkmark for complete call this function and print out the final map list
 function selectionComplete() {
     // reset message
     document.getElementById("message-center").innerHTML = "";
 
-    let finalMapsList = []
+    let finalMapsList = [];
     let sortedMaps = finalMaps.sort(function (a, b) {
         return a.selectedOrder - b.selectedOrder;
     });
@@ -193,7 +280,8 @@ function selectionComplete() {
     console.log(finalMaps);
 }
 
-
+// after the user performs action (select or ban) then we want to grab the map ID and action and push to the final map array.
+//this array will be printed out when the user hits the checkmark
 function updateMapAction(mapID, action, mapSelectedOrder) {
     // find the mapID in the finalMap array
     let matchedItemIndex = getMapIndex(mapID);
@@ -202,6 +290,7 @@ function updateMapAction(mapID, action, mapSelectedOrder) {
     // update the mapOrder
     finalMaps[matchedItemIndex].selectedOrder = mapSelectedOrder;
 }
+
 
 function getMapActionValue(mapID) {
     let matchedItemIndex = getMapIndex(mapID);
@@ -214,6 +303,6 @@ function getMapIndex(mapID) {
     // find the mapID in the finalMap array
     let matchedItem = finalMaps.find(x => x.mapID == mapID);
     // find the index of the matched value
-    let matchedItemIndex = finalMaps.indexOf(matchedItem)
+    let matchedItemIndex = finalMaps.indexOf(matchedItem);
     return matchedItemIndex;
 }

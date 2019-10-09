@@ -89,9 +89,37 @@ img {
 
 #maps_container {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   height: 100%;
   box-sizing: content-box;
+}
+
+.map_column, .enabled, .disabled {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  flex-basis: 25%;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  text-transform: uppercase;
+  user-select: none;
+  text-align: center;
+}
+
+.map_heading{
+  padding-top: 7%;
+  padding-bottom: 7%;
+}
+
+.map_heading small {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: .5em;
 }
 
 .maps_selector, .enabled, .disabled {
@@ -144,6 +172,18 @@ img {
   outline: none; /*sometime javascript clicks cause weird outline*/
 }
 
+.headers-section {
+  flex-direction: row;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-basis: 25%;
+  position: relative;
+  height: auto;
+  min-width: 100%;
+  outline: none; /*sometime javascript clicks cause weird outline*/
+}
+
 /* .maps_selector p, #homeAction, #backAction, #selectionComplete {
   max-width: 100%;
 
@@ -175,4 +215,18 @@ img {
   opacity: .7;
   background: linear-gradient(rgba(153, 0, 0, 0.3), rgba(193, 0, 0, 0.5));
   outline: none; /*sometime javascript clicks cause weird outline*/
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
 }
