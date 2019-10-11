@@ -267,6 +267,8 @@ function selectionComplete() {
     document.getElementById("message-center").innerHTML = "";
 
     let finalMapsList = [];
+    let finalSelectionList = [];
+    let finalBanList = [];
     let sortedMaps = finalMaps.sort(function (a, b) {
         return a.selectedOrder - b.selectedOrder;
     });
@@ -275,8 +277,16 @@ function selectionComplete() {
         if (sortedMaps[i].action !== "default") {
             finalMapsList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": " + sortedMaps[i].action);
         }
+        if (sortedMaps[i].action == "disabled") {
+            finalBanList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": ");
+        }
+        if (sortedMaps[i].action == "selected") {
+            finalSelectionList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": ");
+        }
     }
-    document.getElementById("message-center").innerHTML = finalMapsList;
+    // document.getElementById("message-center").innerHTML = finalMapsList;
+    document.getElementById("message-center").innerHTML = `Selected: <br/>` + finalSelectionList + `<br/><br/>Banned: <br/>` + finalBanList;
+
     console.log(finalMaps);
 }
 
