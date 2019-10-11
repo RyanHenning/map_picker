@@ -278,16 +278,18 @@ function selectionComplete() {
             finalMapsList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": " + sortedMaps[i].action);
         }
         if (sortedMaps[i].action == "disabled") {
-            finalBanList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": ");
+            finalBanList.push(sortedMaps[i].mapID);
         }
         if (sortedMaps[i].action == "selected") {
-            finalSelectionList.push(" " + sortedMaps[i].selectedOrder + "-" + sortedMaps[i].mapID + ": ");
+            finalSelectionList.push(sortedMaps[i].mapID);
         }
     }
     // document.getElementById("message-center").innerHTML = finalMapsList;
-    document.getElementById("message-center").innerHTML = `Selected: <br/>` + finalSelectionList + `<br/><br/>Banned: <br/>` + finalBanList;
+    document.getElementById("message-center").innerHTML = `Selected: <br/>` + finalSelectionList +
+        `<br/><br/>Banned: <br/>` + finalBanList;
+        // `<br/><br/>Ordered: <br/>` + finalMapsList;
 
-    console.log(finalMaps);
+    console.log(finalMapsList);
 }
 
 // after the user performs action (select or ban) then we want to grab the map ID and action and push to the final map array.
